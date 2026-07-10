@@ -208,7 +208,7 @@ function App() {
   } | null>(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-[oklch(0.985_0.005_82)]">
+    <div className="min-h-screen bg-linear-to-b from-white to-[oklch(0.985_0.005_82)]">
       <AnimatePresence mode="wait">
         {stage === "login" && (
           <motion.div
@@ -744,7 +744,7 @@ function SlideWelcome({ onStart }: { onStart: () => void }) {
         className="relative mx-auto aspect-square w-full max-w-lg"
       >
         <div className="absolute inset-0 rounded-[36px] gold-gradient opacity-10 blur-3xl" />
-        <div className="relative flex h-full items-center justify-center rounded-[32px] border border-border bg-white shadow-elevated">
+        <div className="relative flex h-full items-center justify-center rounded-4xl border border-border bg-white shadow-elevated">
           <ShieldIllustration />
         </div>
       </motion.div>
