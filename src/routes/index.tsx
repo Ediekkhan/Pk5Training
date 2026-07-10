@@ -743,7 +743,7 @@ function SlideWelcome({ onStart }: { onStart: () => void }) {
         transition={{ delay: 0.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="relative mx-auto aspect-square w-full max-w-lg"
       >
-        <div className="absolute inset-0 rounded-[36px] gold-gradient opacity-10 blur-3xl" />
+        <div className="absolute inset-0 rounded-[36px] gold-gradient opacity-10 blur-3xl"/>
         <div className="relative flex h-full items-center justify-center rounded-4xl border border-border bg-white shadow-elevated">
           <ShieldIllustration />
         </div>
