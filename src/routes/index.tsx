@@ -789,7 +789,7 @@ function SlideWhy({ onQuizPass, badges }: { onQuizPass: () => void; badges: Set<
   return (
     <div className="grid h-full items-center gap-10 lg:grid-cols-2">
       <div>
-        <SlideHead kicker="Chapter 1" title="Why confidentiality matters" sub="Confidentiality safeguards every part of our business — and everyone in it." />
+        <SlideHead kicker="Chapter 1" title="Why confidentiality matters" sub="Confidentiality safeguardss  every part of our business — and everyone in it." />
         <div className="space-y-3">
           {points.map((p, i) => (
             <motion.div key={p.text}
