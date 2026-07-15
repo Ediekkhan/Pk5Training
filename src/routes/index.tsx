@@ -1386,7 +1386,7 @@ function SlideWhy() {
         </motion.div>
       </div>
 
-      <QuizCard quiz={QUIZ_1} onPass={onQuizPass} passed={badges.has("learner")} />
+      {/* <QuizCard quiz={QUIZ_1} onPass={onQuizPass} passed={badges.has("learner")} /> */}
     </div>
   );
 }
