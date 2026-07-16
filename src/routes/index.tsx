@@ -12,6 +12,7 @@ import {
   Home, Compass,
 } from "lucide-react";
 import logo from "../assets/pk5logo.png";
+import { authService } from "@/services/sso/authService";
 
 export const Route = createFileRoute("/")({ component: App });
 
@@ -819,6 +820,24 @@ function Login({ onLogin }: { onLogin: (id: string) => void }) {
     setTimeout(() => onLogin(id.trim()), 700);
   }
 
+  const handleSSOSignin = async () => {
+    await authService.login();
+  };
+
+  useEffect(() => {
+    const initAuth = async () => {
+       
+      await authService.initialize();
+
+      const ssoAccount = authService.getAccount();
+
+      if (ssoAccount) {onLogin(ssoAccount?.authorityType ?? "train");}
+      // console.log("SSO Account:", ssoAccount);
+    };
+
+    initAuth();
+  }, []);
+
   return (
     <main className="grid min-h-screen lg:grid-cols-2">
       <div className="relative hidden overflow-hidden bg-charcoal lg:block">
@@ -891,6 +910,24 @@ function Login({ onLogin }: { onLogin: (id: string) => void }) {
             <Button type="submit" size="lg" className="w-full" disabled={loading}>
               {loading ? "Signing in…" : (<>Sign in & start training <ArrowRight className="size-4" /></>)}
             </Button>
+
+            <div className="flex items-center w-full gap-4">
+              <div className="flex-1 h-px bg-[#C89B3C]" />
+
+              <p className="px-3 text-[14px] sm:text-[16px] text-black font-['Inter',sans-serif] whitespace-nowrap">
+                OR
+              </p>
+
+              <div className="flex-1 h-px bg-[#C89B3C]" />
+            </div>
+
+            <Button
+              type="button"
+              onClick={handleSSOSignin}
+              size="lg" className="w-full" >
+              <>Sign in with SSO <ArrowRight className="size-4" /></>
+            </Button>
+
             <div className="flex items-center justify-center gap-2 pt-2 text-xs text-muted-foreground">
               <ShieldCheck className="size-3.5 text-success" /> Secure login · Your session is encrypted end-to-end
             </div>
