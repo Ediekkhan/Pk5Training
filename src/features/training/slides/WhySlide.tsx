@@ -101,7 +101,7 @@ export function SlideWhy() {
       <SlideHead
         kicker="Chapter 1"
         title="Why confidentiality matters"
-        sub="Confidentiality safeguards every part of our business — and everyone in it."
+        sub="Mining companies handle several categories of sensitive information that don't come up in most other industries. A leak can cost a company its competitive edge, delay a listing, trigger a market investigation, damage relationships with landowners and communities, or put people's safety at risk. Confidentiality safeguards every part of our business — and everyone in it."
       />
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {points.map((p, i) => (

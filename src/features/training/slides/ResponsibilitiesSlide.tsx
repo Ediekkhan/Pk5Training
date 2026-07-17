@@ -72,11 +72,11 @@ export function SlideResponsibilities() {
 
   return (
     <div>
-      <SlideHead
+      {/* <SlideHead
         kicker="Chapter 3"
         title="Your responsibilities"
         sub="Tap each item to explore what it means in practice."
-      />
+      /> */}
       <div className="space-y-3">
         {RESPONSIBILITIES.map((r, idx) => {
           const isOpen = open === idx;
