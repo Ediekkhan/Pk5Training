@@ -1,14 +1,11 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { getAxiosErrorMessage } from "../utils/axios-error";
 import { tokenStore } from "../auth/token";
-// import { getAppId } from "../utils/helper";
 
-const hostname = window.location.hostname;
-
+// const hostname = window.location.hostname;
 const baseURL = "/api";
-const HEADER_NAME = import.meta.env.VITE_API_KEY_NAME;
-const API_VALUE = import.meta.env.VITE_API_KEY_VALUE;
-
+// const HEADER_NAME = import.meta.env.VITE_API_KEY_NAME;
+// const API_VALUE = import.meta.env.VITE_API_KEY_VALUE;
 declare module "axios" {
   export interface AxiosRequestConfig {
     requiresApiKey?: boolean;
@@ -44,17 +41,6 @@ http.interceptors.request.use((config) => {
   } else if (config.headers) {
     delete (config.headers as any).Authorization;
   }
-
-//   if (config.requiresApiKey && HEADER_NAME) {
-//     config.headers[HEADER_NAME] = API_VALUE;
-//   }
-
-//   const appId = getAppId(hostname);
-
-//   if (appId) {
-//     config.headers["Application-Tenant"] = appId;
-//   }
-
   return config;
 });
 
@@ -95,14 +81,6 @@ http.interceptors.response.use(
 
       return http(config);
     }
-
-    // if (axios.isAxiosError(err)) {
-    //   if (err.response?.status === 401) {
-    //     tokenStore.clear();
-    //     setAuthToken(undefined);
-    //   }
-    // }
-
     return Promise.reject(err);
   },
 );
