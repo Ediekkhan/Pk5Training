@@ -1,70 +1,7 @@
-import {
-  useState,
-  type Dispatch,
-  type ReactNode,
-  type RefObject,
-  type SetStateAction,
-} from "react";
 import { motion } from "motion/react";
-import SignatureCanvas from "react-signature-canvas";
-import {
-  AlertTriangle,
-  Archive,
-  ArrowRight,
-  Award,
-  Building2,
-  Check,
-  CheckCircle2,
-  ChevronDown,
-  DollarSign,
-  Eye,
-  FileText,
-  Fingerprint,
-  FlaskConical,
-  Gavel,
-  Handshake,
-  HardHat,
-  Heart,
-  KeyRound,
-  Landmark,
-  Lock,
-  Mail,
-  Map,
-  Monitor,
-  PartyPopper,
-  Radio,
-  RotateCw,
-  Scale,
-  Shield,
-  ShieldCheck,
-  Sparkles,
-  Tag,
-  Target,
-  Trash2,
-  TrendingDown,
-  Truck,
-  UserCircle,
-  Users,
-  Wifi,
-  X,
-} from "lucide-react";
-import { Button, Card, Checkbox, Field, SlideHead } from "../components/primitives";
-import { BulletList, SectionLabel } from "../components/slide-content";
-import {
-  ASSESSMENT,
-  BADGES,
-  CONFIDENTIAL_TOPICS,
-  CONSEQUENCE_TOPICS,
-  DOS,
-  DONTS,
-  KC1,
-  KC2,
-  KC3,
-  RESPONSIBILITIES,
-  SECURITY,
-  TAKEAWAYS,
-  type KCQuestion,
-} from "../data";
+import { Check } from "lucide-react";
+import { Card, SlideHead } from "../components/primitives";
+import { BADGES, TAKEAWAYS } from "../data";
 import { stagger } from "../motion";
 import type { BadgeKey } from "../types";
 
@@ -116,18 +53,16 @@ export function SlideTakeaways({ badges }: { badges: Set<BadgeKey> }) {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.2 + i * 0.1 }}
-                  className={`flex flex-col items-center rounded-2xl border p-4 text-center ${
-                    earned
-                      ? "border-gold/40 bg-primary-soft"
-                      : "border-dashed border-border bg-white/50"
-                  }`}
+                  className={`flex flex-col items-center rounded-2xl border p-4 text-center ${earned
+                    ? "border-gold/40 bg-primary-soft"
+                    : "border-dashed border-border bg-white/50"
+                    }`}
                 >
                   <div
-                    className={`mb-2 grid size-14 place-items-center rounded-2xl ${
-                      earned
-                        ? "gold-gradient text-white shadow-gold"
-                        : "bg-muted text-muted-foreground/50"
-                    }`}
+                    className={`mb-2 grid size-14 place-items-center rounded-2xl ${earned
+                      ? "gold-gradient text-white shadow-gold"
+                      : "bg-muted text-muted-foreground/50"
+                      }`}
                   >
                     <B.icon className="size-6" />
                   </div>

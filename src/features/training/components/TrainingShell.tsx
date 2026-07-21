@@ -1,33 +1,8 @@
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import SignatureCanvas from "react-signature-canvas";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Award,
-  Check,
-  ChevronRight,
-  Lock,
-  LogOut,
-  Menu,
-  ShieldCheck,
-  Sparkles,
-  X,
-} from "lucide-react";
-// import logo from "@/assets/pk5logo.png";
-// import { Button } from "./primitives";
+import { X } from "lucide-react";
 import { RoadmapList } from "./RoadmapList";
-import {
-  ASSESSMENT,
-  BADGES,
-  CONFIDENTIAL_TOPICS,
-  CONSEQUENCE_TOPICS,
-  KC1,
-  KC2,
-  KC3,
-  ROADMAP,
-} from "../data";
-import type { BadgeKey, CompletionData, TrainingUser } from "../types";
+import { KC1, KC2, KC3 } from "../data";
 import { SlideWelcome } from "../slides/WelcomeSlide";
 import { SlideWhy } from "../slides/WhySlide";
 import { SlideWhat } from "../slides/ConfidentialInfoSlide";
@@ -100,6 +75,8 @@ export function TrainingShell({
     assessScore,
     assessPct,
     assessPassed,
+    isSubmitting,
+    submitError,
     canAdvance,
     go,
     finish,
@@ -183,7 +160,13 @@ export function TrainingShell({
       setSigData={setSigData}
       sigData={sigData}
     />,
-    <SlideCompletionPrompt key="s14" ready={true} onSubmit={finish} />,
+    <SlideCompletionPrompt
+      key="s14"
+      ready={!isSubmitting}
+      submitting={isSubmitting}
+      error={submitError}
+      onSubmit={finish}
+    />,
   ];
 
   return (
@@ -264,7 +247,7 @@ export function TrainingShell({
         currentIndex={i}
         total={total}
         progress={progress}
-        canAdvance={canAdvance}
+        canAdvance={canAdvance && !isSubmitting}
         onPrevious={() => go(i - 1)}
         onNext={() => go(i + 1)}
         onFinish={finish}

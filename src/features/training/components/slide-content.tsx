@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { Check, X } from "lucide-react";
 
 export function SectionLabel({ children }: { children: ReactNode }) {
   return (

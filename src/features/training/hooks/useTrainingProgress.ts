@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import SignatureCanvas from "react-signature-canvas";
+import { trainingService } from "@/api/training";
+import { authService } from "@/services/sso/authService";
 import {
   ASSESSMENT,
   CONFIDENTIAL_TOPICS,
@@ -11,6 +13,8 @@ import {
 } from "../data";
 import type { BadgeKey, CompletionData, TrainingUser } from "../types";
 
+const TRAINING_NUMBER = "PK5-CONFIDENTIALITY-001";
+
 export function useTrainingProgress({
   user,
   onComplete,
@@ -18,6 +22,7 @@ export function useTrainingProgress({
   user: TrainingUser;
   onComplete: (data: CompletionData) => void;
 }) {
+  const ssoAccount = authService.getAccount();
   const total = ROADMAP.length; // 15
   const [i, setI] = useState(0);
   const [dir, setDir] = useState(1);
@@ -35,7 +40,7 @@ export function useTrainingProgress({
 
   // Ack
   const [ack, setAck] = useState(false);
-  const [fullName, setFullName] = useState("");
+  const [fullName, setFullName] = useState(ssoAccount?.name ?? "");
   const [empId, setEmpId] = useState(user.id.includes("@") ? "" : user.id);
   const [dept, setDept] = useState("");
   const [sigData, setSigData] = useState<string>("");
@@ -46,6 +51,8 @@ export function useTrainingProgress({
   // Final assessment
   const [assessAnswers, setAssessAnswers] = useState<Record<number, number>>({});
   const [assessSubmitted, setAssessSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const assessScore = useMemo(
     () => ASSESSMENT.reduce((a, q, idx) => a + (assessAnswers[idx] === q.correct ? 1 : 0), 0),
     [assessAnswers],
@@ -145,14 +152,36 @@ export function useTrainingProgress({
     setDrawerOpen(false);
   };
 
-  const finish = () => {
+  const finish = async () => {
+    if (isSubmitting) return;
+
     const signature = sigMode === "draw" ? sigData : typedSig.trim();
-    onComplete({
-      signature,
-      fullName: fullName.trim(),
-      employeeId: empId.trim(),
-      department: dept.trim(),
-    });
+    const participantEmail = authService.getAccount()?.username || user.id;
+
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      await trainingService.sendTrainingForm({
+        trainingNumber: TRAINING_NUMBER,
+        participantEmail,
+      });
+
+      onComplete({
+        signature,
+        fullName: fullName.trim(),
+        employeeId: empId.trim(),
+        department: dept.trim(),
+      });
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Unable to submit your training record. Please try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   useEffect(() => {
@@ -220,6 +249,8 @@ export function useTrainingProgress({
     assessScore,
     assessPct,
     assessPassed,
+    isSubmitting,
+    submitError,
     canAdvance,
     go,
     finish,

@@ -1,5 +1,3 @@
-// import { PaginationInfo } from ".";
-
 export type UserStatus = "active" | "inactive";
 
 export type User = {
@@ -27,10 +25,6 @@ export type User = {
   isDeleted?: boolean;
   dT_Created?: string; 
 }
-
-// export type UsersResponsePayload = {
-//   data: User[];
-// } & PaginationInfo;
 
 export type CreateUserPayload = Omit<User, "id" | "dT_Created" | "dT_Updated">;
 
