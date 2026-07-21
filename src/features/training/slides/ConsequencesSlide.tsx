@@ -52,21 +52,8 @@ import {
 import { Button, Card, Checkbox, Field, SlideHead } from "../components/primitives";
 import { BulletList, SectionLabel } from "../components/slide-content";
 import {
-  ASSESSMENT,
-  CONFIDENTIAL_TOPICS,
   CONSEQUENCE_TOPICS,
-  DOS,
-  DONTS,
-  KC1,
-  KC2,
-  KC3,
-  RESPONSIBILITIES,
-  SECURITY,
-  TAKEAWAYS,
-  type KCQuestion,
 } from "../data";
-import { stagger } from "../motion";
-import type { BadgeKey } from "../types";
 
 export function SlideConsequencesModule({
   viewed,

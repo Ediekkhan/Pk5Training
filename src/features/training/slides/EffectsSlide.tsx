@@ -5,8 +5,10 @@ import { useState } from "react";
 import { Button } from "react-day-picker";
 import { SlideHead, Card } from "../components/primitives";
 import { SectionLabel, BulletList } from "../components/slide-content";
-
-function SlideEffectsModule({
+import {
+  EFFECT_TOPICS
+} from "../data";
+export function SlideEffectsModule({
   viewed, setViewed,
 }: {
   viewed: Set<number>;
@@ -39,7 +41,7 @@ function SlideEffectsModule({
               {viewed.size} of {EFFECT_TOPICS.length} effects viewed
             </div>
           </div>
-          <div className="min-w-[180px] flex-1 sm:max-w-xs">
+          <div className="min-w-45 flex-1 sm:max-w-xs">
             <div className="h-2 overflow-hidden rounded-full bg-muted">
               <motion.div
                 className="h-full gold-gradient"
@@ -173,15 +175,15 @@ function SlideEffectsModule({
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border p-5">
-          <Button variant="outline" size="sm" onClick={() => goEffect(idx - 1)} disabled={idx === 0}>
+          <Button  className="variantoutline size-1/2" onClick={() => goEffect(idx - 1)} disabled={idx === 0}>
             <ArrowLeft className="size-4" /> Previous
           </Button>
           <div className="inline-flex items-center gap-2 rounded-full bg-gold/15 px-3 py-1.5 text-xs font-bold text-gold-dark">
             <Eye className="size-3.5" /> Viewed
           </div>
-          <Button size="sm" onClick={() => goEffect(idx + 1)} disabled={idx === EFFECT_TOPICS.length - 1}>
+          <motion.button size="sm" onClick={() => goEffect(idx + 1)} disabled={idx === EFFECT_TOPICS.length - 1}>
             Next <ArrowRight className="size-4" />
-          </Button>
+          </motion.button>
         </div>
       </Card>
     </div>

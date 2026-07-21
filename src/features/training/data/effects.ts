@@ -1,7 +1,7 @@
 import { Handshake, Users, Target, Landmark, Gavel, FlaskConical, Radio, AlertTriangle, DollarSign, Shield, Heart, UserCircle } from "lucide-react";
 import { IconType } from "./confidential-topics";
 
-type EffectTopic = {
+export type EffectTopic = {
   icon: IconType;
   title: string;
   short: string;
@@ -13,7 +13,7 @@ type EffectTopic = {
   readTime: string;
 };
 
-const EFFECT_TOPICS: EffectTopic[] = [
+export const EFFECT_TOPICS: EffectTopic[] = [
   {
     icon: Handshake, title: "Loss of Client Trust", short: "Partners walk away",
     explanation: "When sensitive client information leaks, buyers, offtakers and JV partners lose faith in our ability to safeguard shared data.",
