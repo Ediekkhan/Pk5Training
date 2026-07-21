@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import { Fingerprint, Lock, Shield } from "lucide-react";
 
 export function ShieldIllustration() {
   return (

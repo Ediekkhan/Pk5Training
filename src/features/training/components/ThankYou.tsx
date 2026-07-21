@@ -1,20 +1,13 @@
 import { motion } from "motion/react";
 import {
-  ArrowRight,
   Award,
-  Check,
   Compass,
-  Download,
   Home,
-  Lock,
   LogOut,
-  PartyPopper,
-  Shield,
   ShieldCheck,
 } from "lucide-react";
 import { Button, Logo } from "./primitives";
 import { ShieldIllustration } from "./ShieldIllustration";
-import type { CompletionData } from "../types";
 
 export function ThankYou({
   data,

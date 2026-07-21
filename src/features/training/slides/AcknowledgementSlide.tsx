@@ -1,6 +1,6 @@
 
 import SignatureCanvas from "react-signature-canvas";
-import { Button, Card, Checkbox, Field, SlideHead } from "../components/primitives";
+import { Card, Checkbox, Field, SlideHead } from "../components/primitives";
 import { authService } from "@/services/sso/authService";
 
 export function SlideAck(props: {

@@ -3,17 +3,14 @@ import { motion } from "motion/react";
 import {
   ArrowRight,
   Award,
-  Check,
   CheckCircle2,
   Download,
-  Home,
   LogOut,
   RotateCw,
-  ShieldCheck,
 } from "lucide-react";
-import { Button, Card, Logo } from "./primitives";
+import { Button, Card } from "./primitives";
 import { BADGES } from "../data";
-import type { BadgeKey, CompletionData } from "../types";
+import type { BadgeKey } from "../types";
 
 export function Completion({
   data,
