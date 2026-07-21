@@ -1,16 +1,17 @@
 import { motion } from "motion/react";
-import {
-  Check,
-  ShieldCheck,
-} from "lucide-react";
+import { Check, ShieldCheck } from "lucide-react";
 import { Button, Card, SlideHead } from "../components/primitives";
 
 export function SlideCompletionPrompt({
   ready,
+  submitting,
+  error,
   onSubmit,
 }: {
   ready: boolean;
-  onSubmit: () => void;
+  submitting: boolean;
+  error: string;
+  onSubmit: () => void | Promise<void>;
 }) {
   return (
     <div className="mx-auto max-w-2xl text-center">
@@ -33,9 +34,15 @@ export function SlideCompletionPrompt({
         </p>
         <div className="mt-6">
           <Button size="lg" onClick={onSubmit} disabled={!ready}>
-            <Check className="size-4" /> Submit & complete training
+            <Check className="size-4" />
+            {submitting ? "Submitting…" : "Submit & complete training"}
           </Button>
         </div>
+        {error && (
+          <p className="mt-4 text-sm font-medium text-destructive" role="alert">
+            {error}
+          </p>
+        )}
       </Card>
     </div>
   );

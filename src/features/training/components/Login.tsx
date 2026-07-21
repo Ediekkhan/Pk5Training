@@ -42,7 +42,6 @@ export function Login({ onLogin }: { onLogin: (id: string) => void }) {
       if (ssoAccount) {
         onLogin(ssoAccount?.authorityType ?? "train");
       }
-      console.log("SSO Account:", ssoAccount);
     };
     initAuth();
   }, []);

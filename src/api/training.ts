@@ -1,4 +1,4 @@
-import { http } from './https';
+import { http } from "./https";
 
 export interface TrainingBackendRequest {
   trainingNumber: string;
@@ -7,6 +7,6 @@ export interface TrainingBackendRequest {
 
 export const trainingService = {
   sendTrainingForm: async (data: TrainingBackendRequest) => {
-    return http.post('/Training/training', data);
-  }
+    return http.post("api/Training/training", data);
+  },
 };

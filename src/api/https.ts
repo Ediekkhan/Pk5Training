@@ -17,7 +17,7 @@ declare module "axios" {
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const http = axios.create({
-  baseURL,
+  baseURL:import.meta.env.VITE_API_URL,
   headers: {
     "Content-Type": "application/json",
   },

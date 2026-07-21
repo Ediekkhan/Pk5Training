@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import {X} from "lucide-react";
+import { X } from "lucide-react";
 import { RoadmapList } from "./RoadmapList";
 import { KC1, KC2, KC3 } from "../data";
 import { SlideWelcome } from "../slides/WelcomeSlide";
@@ -75,6 +75,8 @@ export function TrainingShell({
     assessScore,
     assessPct,
     assessPassed,
+    isSubmitting,
+    submitError,
     canAdvance,
     go,
     finish,
@@ -158,7 +160,13 @@ export function TrainingShell({
       setSigData={setSigData}
       sigData={sigData}
     />,
-    <SlideCompletionPrompt key="s14" ready={true} onSubmit={finish} />,
+    <SlideCompletionPrompt
+      key="s14"
+      ready={!isSubmitting}
+      submitting={isSubmitting}
+      error={submitError}
+      onSubmit={finish}
+    />,
   ];
 
   return (
@@ -239,7 +247,7 @@ export function TrainingShell({
         currentIndex={i}
         total={total}
         progress={progress}
-        canAdvance={canAdvance}
+        canAdvance={canAdvance && !isSubmitting}
         onPrevious={() => go(i - 1)}
         onNext={() => go(i + 1)}
         onFinish={finish}

@@ -1,8 +1,5 @@
-
 import SignatureCanvas from "react-signature-canvas";
 import { Card, Checkbox, Field, SlideHead } from "../components/primitives";
-import { authService } from "@/services/sso/authService";
-import { trainingService } from "@/api/training";
 
 export function SlideAck(props: {
   ack: boolean;
@@ -58,8 +55,6 @@ export function SlideAck(props: {
     setSigData(c.toDataURL("image/png"));
   };
 
-  const ssoAccount = authService.getAccount();
-  
   return (
     <div className="mx-auto max-w-4xl">
       <SlideHead
@@ -80,10 +75,10 @@ export function SlideAck(props: {
             </span>
           </label>
         </div>
-         {/* acknowledgement FORM */}
+        {/* acknowledgement FORM */}
         <div className="grid gap-5 p-6 md:grid-cols-2">
           {/* INPUT FEILDS */}
-          <Field label="Full Name" value={ssoAccount?.name || fullName} onChange={setFullName} placeholder="Jane Doe" />
+          <Field label="Full Name" value={fullName} onChange={setFullName} placeholder="Jane Doe" />
           <Field label="Employee ID" value={empId} onChange={setEmpId} placeholder="PK-4821" />
           <Field label="Department" value={dept} onChange={setDept} placeholder="Operations" />
           <div>
