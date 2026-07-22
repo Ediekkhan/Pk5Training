@@ -1,59 +1,9 @@
-import {
-  useState,
-  type Dispatch,
-  type ReactNode,
-  type RefObject,
-  type SetStateAction,
-} from "react";
+import {useState} from "react";
 import { motion } from "motion/react";
-import SignatureCanvas from "react-signature-canvas";
-import {
-  AlertTriangle,
-  Archive,
-  ArrowLeft,
-  ArrowRight,
-  Award,
-  Building2,
-  Check,
-  CheckCircle2,
-  ChevronDown,
-  DollarSign,
-  Eye,
-  FileText,
-  Fingerprint,
-  FlaskConical,
-  Gavel,
-  Handshake,
-  HardHat,
-  Heart,
-  KeyRound,
-  Landmark,
-  Lock,
-  Mail,
-  Map,
-  Monitor,
-  PartyPopper,
-  Radio,
-  RotateCw,
-  Scale,
-  Shield,
-  ShieldCheck,
-  Sparkles,
-  Tag,
-  Target,
-  Trash2,
-  TrendingDown,
-  Truck,
-  UserCircle,
-  Users,
-  Wifi,
-  X,
-} from "lucide-react";
-import { Button, Card, Checkbox, Field, SlideHead } from "../components/primitives";
+import { ArrowLeft, ArrowRight, Check, Eye } from "lucide-react";
+import { Button, Card, SlideHead } from "../components/primitives";
 import { BulletList, SectionLabel } from "../components/slide-content";
-import {
-  CONSEQUENCE_TOPICS,
-} from "../data";
+import {CONSEQUENCE_TOPICS} from "../data";
 
 export function SlideConsequencesModule({
   viewed,
@@ -91,7 +41,7 @@ export function SlideConsequencesModule({
               {viewed.size} of {CONSEQUENCE_TOPICS.length} consequences explored
             </div>
           </div>
-          <div className="min-w-[180px] flex-1 sm:max-w-xs">
+          <div className="min-w-45 flex-1 sm:max-w-xs">
             <div className="h-2 overflow-hidden rounded-full bg-muted">
               <motion.div
                 className="h-full gold-gradient"

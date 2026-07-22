@@ -1,72 +1,8 @@
-import {
-  useState,
-  type Dispatch,
-  type ReactNode,
-  type RefObject,
-  type SetStateAction,
-} from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import SignatureCanvas from "react-signature-canvas";
-import {
-  AlertTriangle,
-  Archive,
-  ArrowLeft,
-  ArrowRight,
-  Award,
-  Building2,
-  Check,
-  CheckCircle2,
-  ChevronDown,
-  DollarSign,
-  Eye,
-  FileText,
-  Fingerprint,
-  FlaskConical,
-  Gavel,
-  Handshake,
-  HardHat,
-  Heart,
-  KeyRound,
-  Landmark,
-  Lock,
-  Mail,
-  Map,
-  Monitor,
-  PartyPopper,
-  Radio,
-  RotateCw,
-  Scale,
-  Shield,
-  ShieldCheck,
-  Sparkles,
-  Tag,
-  Target,
-  Trash2,
-  TrendingDown,
-  Truck,
-  UserCircle,
-  Users,
-  Wifi,
-  X,
-} from "lucide-react";
-import { Button, Card, Checkbox, Field, SlideHead } from "../components/primitives";
-import { BulletList, SectionLabel } from "../components/slide-content";
-import {
-  ASSESSMENT,
-  CONFIDENTIAL_TOPICS,
-  CONSEQUENCE_TOPICS,
-  DOS,
-  DONTS,
-  KC1,
-  KC2,
-  KC3,
-  RESPONSIBILITIES,
-  SECURITY,
-  TAKEAWAYS,
-  type KCQuestion,
-} from "../data";
-import { stagger } from "../motion";
-import type { BadgeKey } from "../types";
+import { ArrowLeft, ArrowRight, Check, RotateCw, Sparkles, X } from "lucide-react";
+import { Button, Card, SlideHead } from "../components/primitives";
+import { type KCQuestion } from "../data";
 
 export function SlideKnowledgeCheck({
   title,

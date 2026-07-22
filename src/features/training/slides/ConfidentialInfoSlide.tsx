@@ -113,7 +113,7 @@ export function SlideWhat({
               {completed.size} of {CONFIDENTIAL_TOPICS.length} topics completed
             </div>
           </div>
-          <div className="min-w-[180px] flex-1 sm:max-w-xs">
+          <div className="min-w-45 flex-1 sm:max-w-xs">
             <div className="h-2 overflow-hidden rounded-full bg-muted">
               <motion.div
                 className="h-full gold-gradient"

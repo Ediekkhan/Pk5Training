@@ -1,5 +1,4 @@
 import { Check, ChevronRight, Lock } from "lucide-react";
-import { motion } from "motion/react";
 import type { RoadmapStop } from "../data";
 
 export function RoadmapList({
