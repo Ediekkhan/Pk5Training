@@ -5,6 +5,7 @@ import { RoadmapList } from "./RoadmapList";
 import { KC1, KC2, KC3 } from "../data";
 import { SlideWelcome } from "../slides/WelcomeSlide";
 import { SlideWhy } from "../slides/WhySlide";
+import { SlideEffectsModule } from "../slides/EffectsSlide";
 import { SlideWhat } from "../slides/ConfidentialInfoSlide";
 import { SlideResponsibilities } from "../slides/ResponsibilitiesSlide";
 import { SlideKnowledgeCheck } from "../slides/KnowledgeCheckSlide";
@@ -87,10 +88,13 @@ export function TrainingShell({
   const slides: ReactNode[] = [
     <SlideWelcome key="s0" onStart={() => go(1)} />,
     <SlideWhy key="s1" />,
-    <SlideWhat key="s2" completed={topicsCompleted} setCompleted={setTopicsCompleted} />,
-    <SlideResponsibilities key="s3" />,
+
+  <SlideEffectsModule key="s2" viewed={topicsCompleted} setViewed={setTopicsCompleted} />,
+
+    <SlideWhat key="s3" completed={topicsCompleted} setCompleted={setTopicsCompleted} />,
+    <SlideResponsibilities key="s4" />,
     <SlideKnowledgeCheck
-      key="s4"
+      key="s5"
       title="Knowledge Check 1"
       kicker="Reinforce · Chapters 1–3"
       questions={KC1}
@@ -98,11 +102,11 @@ export function TrainingShell({
       setAnswers={setKc1Answers}
       onContinue={() => go(5)}
     />,
-    <SlideDosDonts key="s5" />,
-    <SlideScenarios key="s6" />,
-    <SlideSecurity key="s7" />,
+    <SlideDosDonts key="s6" />,
+    <SlideScenarios key="s7" />,
+    <SlideSecurity key="s8" />,
     <SlideKnowledgeCheck
-      key="s8"
+      key="s9"
       title="Knowledge Check 2"
       kicker="Reinforce · Chapters 4–6"
       questions={KC2}
@@ -111,13 +115,13 @@ export function TrainingShell({
       onContinue={() => go(9)}
     />,
     <SlideConsequencesModule
-      key="s9"
+      key="s10"
       viewed={consequencesViewed}
       setViewed={setConsequencesViewed}
     />,
-    <SlideTakeaways key="s10" badges={badges} />,
+    <SlideTakeaways key="s11" badges={badges} />,
     <SlideKnowledgeCheck
-      key="s11"
+      key="s12"
       title="Knowledge Check 3"
       kicker="Final reinforcement"
       questions={KC3}
@@ -126,7 +130,7 @@ export function TrainingShell({
       onContinue={() => go(12)}
     />,
     <SlideAssessment
-      key="s12"
+      key="s13"
       answers={assessAnswers}
       setAnswers={setAssessAnswers}
       submitted={assessSubmitted}
@@ -143,7 +147,7 @@ export function TrainingShell({
       overallProgress={progress}
     />,
     <SlideAck
-      key="s13"
+      key="s14"
       ack={ack}
       setAck={setAck}
       fullName={fullName}

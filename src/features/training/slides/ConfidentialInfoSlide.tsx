@@ -101,7 +101,7 @@ export function SlideWhat({
       <div>
         <SlideHead
           kicker="Chapter 2 · Guided Module"
-          title="What is confidential information?"
+          title="What Counts as  “PK5 Mining Confidential Information”?"
           sub="Work through 12 short topics in order. Each unlocks the next."
         />
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-white p-4 shadow-soft">
@@ -301,10 +301,10 @@ export function SlideWhat({
             <SectionLabel>Risks if disclosed</SectionLabel>
             <BulletList items={t.risks} tone="warn" />
           </div>
-          <div>
+          {/* <div>
             <SectionLabel>Your responsibilities</SectionLabel>
             <BulletList items={t.responsibilities} />
-          </div>
+          </div> */}
           <div>
             <SectionLabel>Best practices</SectionLabel>
             <BulletList items={t.bestPractices} tone="good" />
