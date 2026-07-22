@@ -2,8 +2,7 @@
 import { Check, Eye, ArrowLeft, Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
-import { Button } from "react-day-picker";
-import { SlideHead, Card } from "../components/primitives";
+import { Button, SlideHead, Card } from "../components/primitives";
 import { SectionLabel, BulletList } from "../components/slide-content";
 import {
     EFFECT_TOPICS

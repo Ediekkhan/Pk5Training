@@ -4,7 +4,6 @@ import { IconType } from "./confidential-topics";
 export type EffectTopic = {
   icon: IconType;
   title: string;
-  short: string;
   explanation: string;
   miningExample: string;
   pk5Impact: string;
@@ -15,7 +14,7 @@ export type EffectTopic = {
 
 export const EFFECT_TOPICS: EffectTopic[] = [
   {
-    icon: Handshake, title: "Loss of Client Trust", short: "Partners walk away",
+    icon: Handshake, title: "Compromised safety of our people and contractors", 
     explanation: "When sensitive client information leaks, buyers, offtakers and JV partners lose faith in our ability to safeguard shared data.",
     miningExample: "A leaked offtake term sheet reaches a rival smelter, and the client suspends further discussions with PK5.",
     pk5Impact: "Cancelled contracts, damaged long-term relationships, harder onboarding of new partners.",
@@ -24,7 +23,7 @@ export const EFFECT_TOPICS: EffectTopic[] = [
     readTime: "≈ 35 sec read",
   },
   {
-    icon: Users, title: "Loss of Employee Trust", short: "Culture erodes internally",
+    icon: Users, title: "Loss of Mining Licenses or regulatory penalties",
     explanation: "When personal data, salaries or investigation details leak, employees lose confidence that PK5 will protect them.",
     miningExample: "Payroll spreadsheets circulate on WhatsApp after being left on an unlocked laptop at site.",
     pk5Impact: "Spikes in resignations, union disputes, higher recruitment costs, and lower engagement scores.",
@@ -33,7 +32,7 @@ export const EFFECT_TOPICS: EffectTopic[] = [
     readTime: "≈ 30 sec read",
   },
   {
-    icon: Target, title: "Competitive Intelligence Leaks", short: "Rivals gain the edge",
+    icon: Target, title: "Cyber Security incidents and datatheft",
     explanation: "Exploration data, cost models and expansion plans in the wrong hands hand competitors years of catch-up work for free.",
     miningExample: "A junior geologist posts drill assay photos on social media, revealing a promising new deposit.",
     pk5Impact: "Rivals stake adjacent tenements, bidding wars inflate acquisition costs, PK5's first-mover advantage disappears.",
@@ -42,7 +41,7 @@ export const EFFECT_TOPICS: EffectTopic[] = [
     readTime: "≈ 40 sec read",
   },
   {
-    icon: Landmark, title: "Insider Trading Risk", short: "Illegal share dealing",
+    icon: Landmark, title: "Compromised exploration or operational Plans", 
     explanation: "Leaked material non-public information — production numbers, discoveries, M&A — can trigger illegal share trading by tippees.",
     miningExample: "A contractor overhears quarterly production shortfall and short-sells PK5 shares before the announcement.",
     pk5Impact: "Regulator investigations, personal criminal charges, mandatory disclosure, share price volatility.",
@@ -51,7 +50,7 @@ export const EFFECT_TOPICS: EffectTopic[] = [
     readTime: "≈ 40 sec read",
   },
   {
-    icon: Gavel, title: "Contract & NDA Violations", short: "Breach of legal duty",
+    icon: Gavel, title: "Financial loses and reduced profitability", 
     explanation: "Every supplier, partner and employee contract contains confidentiality clauses. Leaks put PK5 in direct breach.",
     miningExample: "Draft supplier pricing shared with a competing bidder violates the NDA signed with the incumbent vendor.",
     pk5Impact: "Injunctions, damages, terminated contracts, and future partners demanding tougher terms.",
@@ -60,7 +59,7 @@ export const EFFECT_TOPICS: EffectTopic[] = [
     readTime: "≈ 35 sec read",
   },
   {
-    icon: FlaskConical, title: "Intellectual Property Theft", short: "Innovations copied",
+    icon: FlaskConical, title: "Legal action and contractual disputes", 
     explanation: "Proprietary processes, ore-processing chemistry and equipment designs are IP. Once disclosed, protection often becomes impossible.",
     miningExample: "A leaked flow-sheet for a new leach process is replicated by a competitor within nine months.",
     pk5Impact: "Loss of technology edge, wasted R&D investment, patent applications potentially invalidated.",
@@ -69,7 +68,7 @@ export const EFFECT_TOPICS: EffectTopic[] = [
     readTime: "≈ 40 sec read",
   },
   {
-    icon: Radio, title: "Data Breach Escalation", short: "Small leak, big incident",
+    icon: Radio, title: "Loss of business opportunities",
     explanation: "A single credential or file leak often opens the door for attackers to move laterally, escalating into a full-scale breach.",
     miningExample: "A reused password from a leaked file gives attackers access to the OT network controlling a processing plant.",
     pk5Impact: "Multi-day outages, ransom demands, mandatory notifications to the OAIC and affected parties.",
@@ -78,7 +77,7 @@ export const EFFECT_TOPICS: EffectTopic[] = [
     readTime: "≈ 40 sec read",
   },
   {
-    icon: AlertTriangle, title: "Media & PR Fallout", short: "Story spins out of control",
+    icon: AlertTriangle, title: "Damage to our reputation and brand",
     explanation: "Once confidential information reaches journalists, PK5 loses control of the narrative and cannot correct the record quickly.",
     miningExample: "An internal incident briefing is leaked to a reporter before the community and regulator are informed.",
     pk5Impact: "Days of adverse coverage, share price impact, and permanent Google search history.",
@@ -87,7 +86,7 @@ export const EFFECT_TOPICS: EffectTopic[] = [
     readTime: "≈ 35 sec read",
   },
   {
-    icon: DollarSign, title: "Loss of Bidding Advantage", short: "Tenders undercut",
+    icon: DollarSign, title: "Loss of investor and stakeholder confidence",
     explanation: "When bid prices, cost bases or negotiation floors leak, competitors price just below us and win the work.",
     miningExample: "Haulage tender pricing shared casually at an industry event allows a rival to submit a $2M lower bid.",
     pk5Impact: "Lost tenders, weakened margin on the tenders we do win, cascading impact on procurement leverage.",
@@ -96,7 +95,7 @@ export const EFFECT_TOPICS: EffectTopic[] = [
     readTime: "≈ 35 sec read",
   },
   {
-    icon: Shield, title: "Environmental & Safety Data Misuse", short: "Selective use of raw data",
+    icon: Shield, title: "Damage to relationships with landowners and communities",
     explanation: "Raw environmental or safety data taken out of context can be weaponised by opponents before PK5 has interpreted it.",
     miningExample: "A partial water-monitoring dataset is leaked and framed as a spill before test results are complete.",
     pk5Impact: "Regulator inspections, community protests, delayed permits, and reputational damage that outlasts the facts.",
@@ -105,7 +104,7 @@ export const EFFECT_TOPICS: EffectTopic[] = [
     readTime: "≈ 40 sec read",
   },
   {
-    icon: Heart, title: "Community Relations Breakdown", short: "Social licence at risk",
+    icon: Heart, title: "Disciplinary action for those responsible",
     explanation: "Host communities expect PK5 to communicate directly and honestly. Leaks that reach them first damage the social licence to operate.",
     miningExample: "A leaked land-access negotiation plan reaches a traditional owner group before formal consultation begins.",
     pk5Impact: "Trust erosion, harder future consultations, protests, and challenges to operating approvals.",
@@ -114,7 +113,7 @@ export const EFFECT_TOPICS: EffectTopic[] = [
     readTime: "≈ 40 sec read",
   },
   {
-    icon: UserCircle, title: "Personal Career Consequences", short: "You are personally accountable",
+    icon: UserCircle, title: "Loss of Competitive Advantage",
     explanation: "Individual employees who cause a confidentiality breach face disciplinary action, dismissal and — in serious cases — personal legal liability.",
     miningExample: "An employee who forwards a confidential geology report to a friend is dismissed and referred to the police.",
     pk5Impact: "Loss of a valued colleague, investigation costs, and a chilling effect on internal collaboration.",

@@ -7,7 +7,7 @@ export const ROADMAP: RoadmapStop[] = [
  { id: 0, label: "Welcome", short: "Welcome" },
   { id: 1, label: "Why Confidentiality Matters", short: "Why" },
   { id: 2, label: "Effects of Poor Confidentiality", short: "Effects" },
-  { id: 3, label: "What is Confidential Information", short: "What" },
+  { id: 3, label: "What Counts as  “PK5 Mining Confidential Information”?", short: "What" },
   { id: 4, label: "Your Responsibilities", short: "Responsibilities" },
   { id: 5, label: "Knowledge Check 1", short: "Check 1" },
   { id: 6, label: "Do's & Don'ts", short: "Do's & Don'ts" },
