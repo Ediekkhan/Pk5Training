@@ -20,6 +20,7 @@ import { SlideCompletionPrompt } from "../slides/CompletionPromptSlide";
 import { useTrainingProgress } from "../hooks/useTrainingProgress";
 import { TrainingHeader } from "./TrainingHeader";
 import { TrainingNavigation } from "./TrainingNavigation";
+import { SlideWhatIntro } from "../slides/WhatIsConfidentialSlide";
 
 export function TrainingShell({
   user,
@@ -45,6 +46,8 @@ export function TrainingShell({
     setDrawerOpen,
     topicsCompleted,
     setTopicsCompleted,
+    effectsViewed,
+    setEffectsViewed,
     consequencesViewed,
     setConsequencesViewed,
     kc1Answers,
@@ -88,9 +91,8 @@ export function TrainingShell({
   const slides: ReactNode[] = [
     <SlideWelcome key="s0" onStart={() => go(1)} />,
     <SlideWhy key="s1" />,
-
-  <SlideEffectsModule key="s2" viewed={topicsCompleted} setViewed={setTopicsCompleted} />,
-
+    <SlideEffectsModule key="s2" viewed={effectsViewed} setViewed={setEffectsViewed} />,
+    <SlideWhatIntro key="s2a" />,
     <SlideWhat key="s3" completed={topicsCompleted} setCompleted={setTopicsCompleted} />,
     <SlideResponsibilities key="s4" />,
     <SlideKnowledgeCheck
@@ -100,7 +102,7 @@ export function TrainingShell({
       questions={KC1}
       answers={kc1Answers}
       setAnswers={setKc1Answers}
-      onContinue={() => go(5)}
+      onContinue={() => go(7)}
     />,
     <SlideDosDonts key="s6" />,
     <SlideScenarios key="s7" />,
@@ -112,7 +114,7 @@ export function TrainingShell({
       questions={KC2}
       answers={kc2Answers}
       setAnswers={setKc2Answers}
-      onContinue={() => go(9)}
+      onContinue={() => go(11)}
     />,
     <SlideConsequencesModule
       key="s10"
@@ -127,7 +129,7 @@ export function TrainingShell({
       questions={KC3}
       answers={kc3Answers}
       setAnswers={setKc3Answers}
-      onContinue={() => go(12)}
+      onContinue={() => go(14)}
     />,
     <SlideAssessment
       key="s13"
@@ -138,7 +140,7 @@ export function TrainingShell({
       score={assessScore}
       pct={assessPct}
       passed={assessPassed}
-      onContinue={() => go(13)}
+      onContinue={() => go(15)}
       onReviewTraining={() => go(0)}
       onRetake={() => {
         setAssessAnswers({});
@@ -186,9 +188,8 @@ export function TrainingShell({
       <div className="mx-auto flex w-full max-w-350 flex-1 gap-6 px-4 py-6 sm:px-6 sm:py-8">
         {/* Desktop roadmap sidebar */}
         <aside
-          className={`sticky top-19 hidden h-[calc(100vh-140px)] shrink-0 overflow-y-auto rounded-2xl border border-border bg-white/70 backdrop-blur transition-all lg:block ${
-            sidebarOpen ? "w-72" : "w-16"
-          }`}
+          className={`sticky top-19 hidden h-[calc(100vh-140px)] shrink-0 overflow-y-auto rounded-2xl border border-border bg-white/70 backdrop-blur transition-all lg:block ${sidebarOpen ? "w-72" : "w-16"
+            }`}
         >
           <RoadmapList stops={roadmapStates} collapsed={!sidebarOpen} onJump={(id) => go(id)} />
         </aside>

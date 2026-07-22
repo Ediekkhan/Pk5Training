@@ -33,6 +33,13 @@ export function TrainingHeader({
           >
             <Menu className="size-4" />
           </button>
+          
+          <div className="flex items-center gap-2.5">
+            <div className="relative grid size-14 place-items-center">
+              <img src={logo} alt="PK5 Mining Logo" />
+            </div>
+          </div>
+
           <button
             onClick={onToggleSidebar}
             className="hidden size-9 place-items-center rounded-lg border border-border bg-white text-charcoal lg:grid"
@@ -40,14 +47,9 @@ export function TrainingHeader({
           >
             <Menu className="size-4" />
           </button>
-          <div className="flex items-center gap-2.5">
-            <div className="relative grid size-14 place-items-center">
-              <img src={logo} alt="PK5 Mining Logo" />
-            </div>
-          </div>
         </div>
         <div className="hidden items-center gap-3 md:flex">
-          {(["learner", "practitioner", "champion"] as BadgeKey[]).map((key) => {
+          {(["learner", "learner", "champion"] as BadgeKey[]).map((key) => {
             const badge = BADGES[key];
             const earned = badges.has(key);
             return (

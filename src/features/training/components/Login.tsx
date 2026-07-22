@@ -72,14 +72,19 @@ export function Login({ onLogin }: { onLogin: (id: string) => void }) {
           <Logo className="[&_.text-charcoal]:text-white [&_.text-muted-foreground]:text-white/60" />
           <div className="max-w-md space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/80 backdrop-blur">
-              <Sparkles className="size-3.5 text-gold" /> Enterprise Onboarding
+              <Sparkles className="size-3.5 text-gold" /> CONFIDENTIALITY & DATA PROTECTION
             </div>
             <h1 className="font-display text-5xl font-extrabold leading-[1.05] tracking-tight">
-              Protect what <span className="text-gold-gradient">powers</span> our mission.
+              PK5 MINING INFORMATION <span className="text-gold-gradient">CONFIDENTIALITY</span> <br />
+              TRAINING
             </h1>
-            <p className="text-lg leading-relaxed text-white/70">
+            {/* <p className="text-lg leading-relaxed text-white/70">
               A concise, interactive training on confidentiality — designed for the people who keep
               PK5 Mining moving.
+            </p> */}
+
+            <p className="text-lg leading-relaxed text-white/70">
+              PROTECTING PK5 MINING NIG. LTD. INFORMATION ASSETS
             </p>
             <div className="grid grid-cols-3 gap-3 pt-4">
               {[
@@ -117,7 +122,7 @@ export function Login({ onLogin }: { onLogin: (id: string) => void }) {
               Sign in with your employee credentials to begin training.
             </p>
           </div>
-          <form onSubmit={submit} className="space-y-5">
+          {/* <form onSubmit={submit} className="space-y-5">
             <Field
               label="Employee ID or Email"
               icon={<UserCircle className="size-4" />}
@@ -168,24 +173,24 @@ export function Login({ onLogin }: { onLogin: (id: string) => void }) {
                 </>
               )}
             </Button>
+          </form> */}
 
-            <div className="flex w-full items-center gap-4">
-              <div className="h-px flex-1 bg-[#C89B3C]" />
+          {/* <div className="flex w-full items-center gap-4">
+            <div className="h-px flex-1 bg-[#C89B3C]" />
               <p className="whitespace-nowrap px-3 font-['Inter',sans-serif] text-[14px] text-black sm:text-[16px]">
                 OR
               </p>
               <div className="h-px flex-1 bg-[#C89B3C]" />
-            </div>
+          </div> */}
 
-            <Button type="button" onClick={handleSSOSignin} size="lg" className="w-full">
-              Sign in with SSO <ArrowRight className="size-4" />
-            </Button>
+          <Button type="button" onClick={handleSSOSignin} size="lg" className="w-full">
+            Sign in with SSO <ArrowRight className="size-4" />
+          </Button>
 
-            <div className="flex items-center justify-center gap-2 pt-2 text-xs text-muted-foreground">
-              <ShieldCheck className="size-3.5 text-success" /> Secure login · Your session is
-              encrypted end-to-end
-            </div>
-          </form>
+          <div className="flex items-center justify-center gap-2 pt-2 text-xs text-muted-foreground">
+            <ShieldCheck className="size-3.5 text-success" /> Secure login · Your session is
+            encrypted end-to-end
+          </div>
         </div>
       </div>
     </main>
