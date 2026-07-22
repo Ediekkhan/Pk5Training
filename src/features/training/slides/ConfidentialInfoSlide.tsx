@@ -98,7 +98,7 @@ export function SlideWhat({
     return (
       <div>
         <SlideHead
-          kicker="Chapter 2 · Guided Module"
+          kicker="Chapter 4 · Guided Module"
           title="What Counts as  “PK5 Mining Confidential Information”?"
           sub="Work through 12 short topics in order. Each unlocks the next."
         />
