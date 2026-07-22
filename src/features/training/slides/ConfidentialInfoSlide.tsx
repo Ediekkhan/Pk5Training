@@ -65,8 +65,6 @@ import {
   TAKEAWAYS,
   type KCQuestion,
 } from "../data";
-import { stagger } from "../motion";
-import type { BadgeKey } from "../types";
 
 export function SlideWhat({
   completed,

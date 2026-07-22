@@ -75,7 +75,7 @@ export function SlideEffectsModule({
                                     <e.icon className="size-5" />
                                 </div>
                                 <div className="font-display text-sm font-bold text-charcoal">{e.title}</div>
-                                <div className="mt-0.5 text-xs text-muted-foreground">{e.short}</div>
+                                {/* <div className="mt-0.5 text-xs text-muted-foreground">{e.short}</div> */}
                                 <div className="mt-2 inline-flex items-center gap-1 rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold text-muted-foreground">
                                     {e.readTime}
                                 </div>
@@ -137,7 +137,7 @@ export function SlideEffectsModule({
                     <div className="min-w-0 flex-1">
                         <div className="text-[11px] font-bold uppercase tracking-wider text-gold-dark">Effect · {e.readTime}</div>
                         <h2 className="font-display text-2xl font-extrabold tracking-tight text-charcoal sm:text-3xl">{e.title}</h2>
-                        <div className="mt-1 text-xs text-muted-foreground">{e.short}</div>
+                        {/* <div className="mt-1 text-xs text-muted-foreground">{e.short}</div> */}
                     </div>
                 </div>
 

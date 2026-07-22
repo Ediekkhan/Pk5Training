@@ -5,3 +5,4 @@ export * from "./knowledge-checks";
 export * from "./responsibilities";
 export * from "./roadmap";
 export * from "./effects";
+export * from "./what-confidential";

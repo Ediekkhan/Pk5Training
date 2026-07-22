@@ -81,30 +81,34 @@ export function useTrainingProgress({
       case 1:
         return maxIndex > 1;
       case 2:
-        return topicsCompleted.size >= CONFIDENTIAL_TOPICS.length;
+        return maxIndex > 2;
       case 3:
         return maxIndex > 3;
       case 4:
-        return Object.keys(kc1Answers).length === KC1.length;
+        return topicsCompleted.size >= CONFIDENTIAL_TOPICS.length;
       case 5:
         return maxIndex > 5;
       case 6:
-        return maxIndex > 6;
+        return Object.keys(kc1Answers).length === KC1.length;
       case 7:
         return maxIndex > 7;
       case 8:
-        return Object.keys(kc2Answers).length === KC2.length;
+        return maxIndex > 8;
       case 9:
-        return consequencesViewed.size >= CONSEQUENCE_TOPICS.length;
+        return maxIndex > 9;
       case 10:
-        return maxIndex > 10;
+        return Object.keys(kc2Answers).length === KC2.length;
       case 11:
-        return Object.keys(kc3Answers).length === KC3.length;
+        return consequencesViewed.size >= CONSEQUENCE_TOPICS.length;
       case 12:
-        return assessPassed;
+        return maxIndex > 12;
       case 13:
-        return false; // complete via submit
+        return Object.keys(kc3Answers).length === KC3.length;
       case 14:
+        return assessPassed;
+      case 15:
+        return false; // complete via submit
+      case 16:
         return false;
       default:
         return false;
@@ -112,13 +116,13 @@ export function useTrainingProgress({
   };
 
   const canAdvance = useMemo(() => {
-    if (i === 2) return topicsCompleted.size >= CONFIDENTIAL_TOPICS.length;
-    if (i === 4) return Object.keys(kc1Answers).length === KC1.length;
-    if (i === 8) return Object.keys(kc2Answers).length === KC2.length;
-    if (i === 9) return consequencesViewed.size >= CONSEQUENCE_TOPICS.length;
-    if (i === 11) return Object.keys(kc3Answers).length === KC3.length;
-    if (i === 12) return assessPassed;
-    if (i === 13) {
+    if (i === 4) return topicsCompleted.size >= CONFIDENTIAL_TOPICS.length;
+    if (i === 6) return Object.keys(kc1Answers).length === KC1.length;
+    if (i === 10) return Object.keys(kc2Answers).length === KC2.length;
+    if (i === 11) return consequencesViewed.size >= CONSEQUENCE_TOPICS.length;
+    if (i === 13) return Object.keys(kc3Answers).length === KC3.length;
+    if (i === 14) return assessPassed;
+    if (i === 15) {
       const sig = sigMode === "draw" ? sigData : typedSig.trim();
       return Boolean(ack && fullName.trim() && empId.trim() && dept.trim() && sig);
     }

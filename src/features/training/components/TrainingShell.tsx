@@ -20,6 +20,7 @@ import { SlideCompletionPrompt } from "../slides/CompletionPromptSlide";
 import { useTrainingProgress } from "../hooks/useTrainingProgress";
 import { TrainingHeader } from "./TrainingHeader";
 import { TrainingNavigation } from "./TrainingNavigation";
+import { SlideWhatIntro } from "../slides/WhatIsConfidentialSlide";
 
 export function TrainingShell({
   user,
@@ -100,7 +101,7 @@ export function TrainingShell({
       questions={KC1}
       answers={kc1Answers}
       setAnswers={setKc1Answers}
-      onContinue={() => go(5)}
+      onContinue={() => go(7)}
     />,
     <SlideDosDonts key="s6" />,
     <SlideScenarios key="s7" />,
@@ -112,7 +113,7 @@ export function TrainingShell({
       questions={KC2}
       answers={kc2Answers}
       setAnswers={setKc2Answers}
-      onContinue={() => go(9)}
+      onContinue={() => go(11)}
     />,
     <SlideConsequencesModule
       key="s10"
@@ -127,7 +128,7 @@ export function TrainingShell({
       questions={KC3}
       answers={kc3Answers}
       setAnswers={setKc3Answers}
-      onContinue={() => go(12)}
+      onContinue={() => go(14)}
     />,
     <SlideAssessment
       key="s13"
@@ -138,7 +139,7 @@ export function TrainingShell({
       score={assessScore}
       pct={assessPct}
       passed={assessPassed}
-      onContinue={() => go(13)}
+      onContinue={() => go(15)}
       onReviewTraining={() => go(0)}
       onRetake={() => {
         setAssessAnswers({});
