@@ -1,36 +1,14 @@
 import type { ComponentType } from "react";
 import {
-  AlertTriangle,
-  Archive,
-  Award,
-  Building2,
   DollarSign,
   FileText,
-  Fingerprint,
   FlaskConical,
-  Gavel,
   Handshake,
-  HardHat,
-  Heart,
-  KeyRound,
-  Landmark,
-  Lock,
   Mail,
-  Map,
-  Monitor,
-  Radio,
-  Scale,
-  Shield,
-  ShieldCheck,
-  Sparkles,
-  Tag,
-  Target,
-  Trash2,
-  TrendingDown,
-  Truck,
+  Map, Tag,
+  Target, Truck,
   UserCircle,
-  Users,
-  Wifi,
+  Users
 } from "lucide-react";
 
 export type IconType = ComponentType<{ className?: string }>;
@@ -51,8 +29,8 @@ export type ConfidentialTopic = {
 
 export const CONFIDENTIAL_TOPICS: ConfidentialTopic[] = [
   {
-    icon: Map, 
-    title: "Geological and Exploration Data", 
+    icon: Map,
+    title: "Geological and Exploration Data",
     short: "Exploration & survey findings",
     definition: "Geological and Exploration Data refers to information collected through geological mapping, surveys, drilling, sampling, and exploration activities to identify, evaluate, and characterize mineral deposits, their location, quality, and economic potential.",
     why: "This is often a mining company's single most valuable asset. Premature disclosure can allow competitors to peg adjoining ground, front-run tenement applications, or trade on information not yet available to the market.",
@@ -63,8 +41,8 @@ export const CONFIDENTIAL_TOPICS: ConfidentialTopic[] = [
     read: "~40s read",
   },
   {
-    icon: FileText, 
-    title: "Commercial, Financial, and Contractual Information", 
+    icon: FileText,
+    title: "Commercial, Financial, and Contractual Information",
     short: "Business Information",
     definition: "Information relating to business operations, financial performance, and contractual agreements that support commercial and operational decision-making.",
     why: "Protecting this information preserves the company's competitive advantage, safeguards financial interests, and ensures compliance with contractual obligations.",
@@ -75,8 +53,8 @@ export const CONFIDENTIAL_TOPICS: ConfidentialTopic[] = [
     read: "~35s read",
   },
   {
-    icon: DollarSign, 
-    title: "Land, Tenement, and Community Agreements", 
+    icon: DollarSign,
+    title: "Land, Tenement, and Community Agreements",
     short: "Land & Community Agreements",
     definition: "Land, Tenement, and Community Agreements refer to legal and operational agreements governing land access, mineral rights, tenement ownership, and relationships with host communities to support responsible mining activities.",
     why: "These agreements are frequently subject to specific confidentiality clauses negotiated with communities or landholders, and premature disclosure can undermine trust or breach legal obligations owed to third parties, not just the company.",
@@ -87,8 +65,8 @@ export const CONFIDENTIAL_TOPICS: ConfidentialTopic[] = [
     read: "~35s read",
   },
   {
-    icon: Users, 
-    title: "Safety, Environmental, and Incident Data", 
+    icon: Users,
+    title: "Safety, Environmental, and Incident Data",
     short: "HSE Records",
     definition: "Information relating to workplace safety, environmental performance, and incident reporting used to manage operational risks and ensure regulatory compliance.",
     why: "Protecting this data supports workplace safety, regulatory compliance, environmental stewardship, and effective risk management.",
@@ -98,9 +76,10 @@ export const CONFIDENTIAL_TOPICS: ConfidentialTopic[] = [
     didYouKnow: "Safety and incident records are often required to be retained for several years to support regulatory compliance, audits, and investigations?",
     read: "~30s read",
   },
+  // 5
   {
-    icon: UserCircle, 
-    title: "Customer Information", 
+    icon: UserCircle,
+    title: "Customer Information",
     short: "Client details & history",
     definition: "Customer Information refers to personal, business, and transactional information relating to customers, clients, or business partners that is collected and maintained to support business operations and service delivery.",
     why: "Our clients share information under strict confidentiality expectations, backed by contract.",
@@ -135,8 +114,8 @@ export const CONFIDENTIAL_TOPICS: ConfidentialTopic[] = [
     read: "~30s read",
   },
   {
-    icon: Target, 
-    title: "Research and Development", 
+    icon: Target,
+    title: "Research and Development",
     short: "R&D Records",
     definition: "These are Information relating to research, innovation, testing, and the development of new technologies, processes, and products to improve mining operations and business performance.",
     why: "Protecting R&D information preserves intellectual property, maintains the company's competitive advantage, and prevents unauthorized use of proprietary innovations.",
@@ -147,8 +126,8 @@ export const CONFIDENTIAL_TOPICS: ConfidentialTopic[] = [
     read: "~35s read",
   },
   {
-    icon: Tag, 
-    title: "Access Credentials and IT Security", 
+    icon: Tag,
+    title: "Access Credentials and IT Security",
     short: "IT Security",
     definition: "Information relating to user accounts, passwords, authentication methods, system access, and cybersecurity measures used to protect the company's digital systems and data.",
     why: "Compromised credentials are one of the most common ways confidential information of every other kind ends up in the wrong hands. Treat access credentials as confidential in their own right, not just as a means to an end.",
@@ -159,8 +138,8 @@ export const CONFIDENTIAL_TOPICS: ConfidentialTopic[] = [
     read: "~30s read",
   },
   {
-    icon: Truck, 
-    title: "People-Related Information", 
+    icon: Truck,
+    title: "People-Related Information",
     short: "Personnel Records",
     definition: "Information relating to employees, contractors, and job applicants, including personal details, employment records, performance information, and other work-related data.",
     why: "Protecting people-related information safeguards individual privacy, builds trust, and ensures compliance with employment and data protection laws.",
@@ -170,9 +149,10 @@ export const CONFIDENTIAL_TOPICS: ConfidentialTopic[] = [
     didYouKnow: "Personnel records often contain sensitive personal information that must be kept confidential?",
     read: "~30s read",
   },
+  // 11
   {
-    icon: FlaskConical, 
-    title: "Market-Sensitive Information ", 
+    icon: FlaskConical,
+    title: "Market-Sensitive Information ",
     short: "Market Information",
     definition: "Information that could influence the value of a company's securities, including financial results, major projects, acquisitions, and other material business developments.",
     why: "Protecting market-sensitive information helps prevent insider trading, ensures regulatory compliance, and maintains market integrity.",
