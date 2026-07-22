@@ -46,6 +46,8 @@ export function TrainingShell({
     setDrawerOpen,
     topicsCompleted,
     setTopicsCompleted,
+    effectsViewed,
+    setEffectsViewed,
     consequencesViewed,
     setConsequencesViewed,
     kc1Answers,
@@ -89,9 +91,8 @@ export function TrainingShell({
   const slides: ReactNode[] = [
     <SlideWelcome key="s0" onStart={() => go(1)} />,
     <SlideWhy key="s1" />,
-
-  <SlideEffectsModule key="s2" viewed={topicsCompleted} setViewed={setTopicsCompleted} />,
-
+    <SlideEffectsModule key="s2" viewed={effectsViewed} setViewed={setEffectsViewed} />,
+    <SlideWhatIntro key="s2a" />,
     <SlideWhat key="s3" completed={topicsCompleted} setCompleted={setTopicsCompleted} />,
     <SlideResponsibilities key="s4" />,
     <SlideKnowledgeCheck
@@ -187,9 +188,8 @@ export function TrainingShell({
       <div className="mx-auto flex w-full max-w-350 flex-1 gap-6 px-4 py-6 sm:px-6 sm:py-8">
         {/* Desktop roadmap sidebar */}
         <aside
-          className={`sticky top-19 hidden h-[calc(100vh-140px)] shrink-0 overflow-y-auto rounded-2xl border border-border bg-white/70 backdrop-blur transition-all lg:block ${
-            sidebarOpen ? "w-72" : "w-16"
-          }`}
+          className={`sticky top-19 hidden h-[calc(100vh-140px)] shrink-0 overflow-y-auto rounded-2xl border border-border bg-white/70 backdrop-blur transition-all lg:block ${sidebarOpen ? "w-72" : "w-16"
+            }`}
         >
           <RoadmapList stops={roadmapStates} collapsed={!sidebarOpen} onJump={(id) => go(id)} />
         </aside>

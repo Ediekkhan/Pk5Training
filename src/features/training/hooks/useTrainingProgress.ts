@@ -31,7 +31,8 @@ export function useTrainingProgress({
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   // Progress state
-  const [topicsCompleted, setTopicsCompleted] = useState<Set<number>>(new Set());
+  const [topicsCompleted, setTopicsCompleted] = useState<Set<number>>(new Set()); 
+  const [effectsViewed, setEffectsViewed] = useState<Set<number>>(new Set());
   const [consequencesViewed, setConsequencesViewed] = useState<Set<number>>(new Set());
   const [kc1Answers, setKc1Answers] = useState<Record<number, number>>({});
   const [kc2Answers, setKc2Answers] = useState<Record<number, number>>({});
@@ -222,6 +223,8 @@ export function useTrainingProgress({
     setDrawerOpen,
     topicsCompleted,
     setTopicsCompleted,
+    effectsViewed,
+    setEffectsViewed,
     consequencesViewed,
     setConsequencesViewed,
     kc1Answers,
