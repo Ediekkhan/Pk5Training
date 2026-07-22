@@ -1,35 +1,11 @@
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import SignatureCanvas from "react-signature-canvas";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Award,
-  Check,
-  ChevronRight,
-  Lock,
-  LogOut,
-  Menu,
-  ShieldCheck,
-  Sparkles,
-  X,
-} from "lucide-react";
-// import logo from "@/assets/pk5logo.png";
-// import { Button } from "./primitives";
+import { X } from "lucide-react";
 import { RoadmapList } from "./RoadmapList";
-import {
-  ASSESSMENT,
-  BADGES,
-  CONFIDENTIAL_TOPICS,
-  CONSEQUENCE_TOPICS,
-  KC1,
-  KC2,
-  KC3,
-  ROADMAP,
-} from "../data";
-import type { BadgeKey, CompletionData, TrainingUser } from "../types";
+import { KC1, KC2, KC3 } from "../data";
 import { SlideWelcome } from "../slides/WelcomeSlide";
 import { SlideWhy } from "../slides/WhySlide";
+import { SlideEffectsModule } from "../slides/EffectsSlide";
 import { SlideWhat } from "../slides/ConfidentialInfoSlide";
 import { SlideResponsibilities } from "../slides/ResponsibilitiesSlide";
 import { SlideKnowledgeCheck } from "../slides/KnowledgeCheckSlide";
@@ -44,6 +20,7 @@ import { SlideCompletionPrompt } from "../slides/CompletionPromptSlide";
 import { useTrainingProgress } from "../hooks/useTrainingProgress";
 import { TrainingHeader } from "./TrainingHeader";
 import { TrainingNavigation } from "./TrainingNavigation";
+import { SlideWhatIntro } from "../slides/WhatIsConfidentialSlide";
 
 export function TrainingShell({
   user,
@@ -69,6 +46,8 @@ export function TrainingShell({
     setDrawerOpen,
     topicsCompleted,
     setTopicsCompleted,
+    effectsViewed,
+    setEffectsViewed,
     consequencesViewed,
     setConsequencesViewed,
     kc1Answers,
@@ -100,6 +79,8 @@ export function TrainingShell({
     assessScore,
     assessPct,
     assessPassed,
+    isSubmitting,
+    submitError,
     canAdvance,
     go,
     finish,
@@ -110,46 +91,48 @@ export function TrainingShell({
   const slides: ReactNode[] = [
     <SlideWelcome key="s0" onStart={() => go(1)} />,
     <SlideWhy key="s1" />,
-    <SlideWhat key="s2" completed={topicsCompleted} setCompleted={setTopicsCompleted} />,
-    <SlideResponsibilities key="s3" />,
+    <SlideEffectsModule key="s2" viewed={effectsViewed} setViewed={setEffectsViewed} />,
+    <SlideWhatIntro key="s2a" />,
+    <SlideWhat key="s3" completed={topicsCompleted} setCompleted={setTopicsCompleted} />,
+    <SlideResponsibilities key="s4" />,
     <SlideKnowledgeCheck
-      key="s4"
+      key="s5"
       title="Knowledge Check 1"
       kicker="Reinforce · Chapters 1–3"
       questions={KC1}
       answers={kc1Answers}
       setAnswers={setKc1Answers}
-      onContinue={() => go(5)}
+      onContinue={() => go(7)}
     />,
-    <SlideDosDonts key="s5" />,
-    <SlideScenarios key="s6" />,
-    <SlideSecurity key="s7" />,
+    <SlideDosDonts key="s6" />,
+    <SlideScenarios key="s7" />,
+    <SlideSecurity key="s8" />,
     <SlideKnowledgeCheck
-      key="s8"
+      key="s9"
       title="Knowledge Check 2"
       kicker="Reinforce · Chapters 4–6"
       questions={KC2}
       answers={kc2Answers}
       setAnswers={setKc2Answers}
-      onContinue={() => go(9)}
+      onContinue={() => go(11)}
     />,
     <SlideConsequencesModule
-      key="s9"
+      key="s10"
       viewed={consequencesViewed}
       setViewed={setConsequencesViewed}
     />,
-    <SlideTakeaways key="s10" badges={badges} />,
+    <SlideTakeaways key="s11" badges={badges} />,
     <SlideKnowledgeCheck
-      key="s11"
+      key="s12"
       title="Knowledge Check 3"
       kicker="Final reinforcement"
       questions={KC3}
       answers={kc3Answers}
       setAnswers={setKc3Answers}
-      onContinue={() => go(12)}
+      onContinue={() => go(14)}
     />,
     <SlideAssessment
-      key="s12"
+      key="s13"
       answers={assessAnswers}
       setAnswers={setAssessAnswers}
       submitted={assessSubmitted}
@@ -157,7 +140,7 @@ export function TrainingShell({
       score={assessScore}
       pct={assessPct}
       passed={assessPassed}
-      onContinue={() => go(13)}
+      onContinue={() => go(15)}
       onReviewTraining={() => go(0)}
       onRetake={() => {
         setAssessAnswers({});
@@ -166,7 +149,7 @@ export function TrainingShell({
       overallProgress={progress}
     />,
     <SlideAck
-      key="s13"
+      key="s14"
       ack={ack}
       setAck={setAck}
       fullName={fullName}
@@ -183,7 +166,13 @@ export function TrainingShell({
       setSigData={setSigData}
       sigData={sigData}
     />,
-    <SlideCompletionPrompt key="s14" ready={true} onSubmit={finish} />,
+    <SlideCompletionPrompt
+      key="s14"
+      ready={!isSubmitting}
+      submitting={isSubmitting}
+      error={submitError}
+      onSubmit={finish}
+    />,
   ];
 
   return (
@@ -199,9 +188,8 @@ export function TrainingShell({
       <div className="mx-auto flex w-full max-w-350 flex-1 gap-6 px-4 py-6 sm:px-6 sm:py-8">
         {/* Desktop roadmap sidebar */}
         <aside
-          className={`sticky top-19 hidden h-[calc(100vh-140px)] shrink-0 overflow-y-auto rounded-2xl border border-border bg-white/70 backdrop-blur transition-all lg:block ${
-            sidebarOpen ? "w-72" : "w-16"
-          }`}
+          className={`sticky top-19 hidden h-[calc(100vh-140px)] shrink-0 overflow-y-auto rounded-2xl border border-border bg-white/70 backdrop-blur transition-all lg:block ${sidebarOpen ? "w-72" : "w-16"
+            }`}
         >
           <RoadmapList stops={roadmapStates} collapsed={!sidebarOpen} onJump={(id) => go(id)} />
         </aside>
@@ -264,7 +252,7 @@ export function TrainingShell({
         currentIndex={i}
         total={total}
         progress={progress}
-        canAdvance={canAdvance}
+        canAdvance={canAdvance && !isSubmitting}
         onPrevious={() => go(i - 1)}
         onNext={() => go(i + 1)}
         onFinish={finish}

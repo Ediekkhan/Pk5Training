@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import SignatureCanvas from "react-signature-canvas";
+import { trainingService } from "@/api/training";
+import { authService } from "@/services/sso/authService";
 import {
   ASSESSMENT,
   CONFIDENTIAL_TOPICS,
@@ -11,6 +13,8 @@ import {
 } from "../data";
 import type { BadgeKey, CompletionData, TrainingUser } from "../types";
 
+const TRAINING_NUMBER = "PK5-CONFIDENTIALITY-001";
+
 export function useTrainingProgress({
   user,
   onComplete,
@@ -18,6 +22,7 @@ export function useTrainingProgress({
   user: TrainingUser;
   onComplete: (data: CompletionData) => void;
 }) {
+  const ssoAccount = authService.getAccount();
   const total = ROADMAP.length; // 15
   const [i, setI] = useState(0);
   const [dir, setDir] = useState(1);
@@ -26,7 +31,8 @@ export function useTrainingProgress({
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   // Progress state
-  const [topicsCompleted, setTopicsCompleted] = useState<Set<number>>(new Set());
+  const [topicsCompleted, setTopicsCompleted] = useState<Set<number>>(new Set()); 
+  const [effectsViewed, setEffectsViewed] = useState<Set<number>>(new Set());
   const [consequencesViewed, setConsequencesViewed] = useState<Set<number>>(new Set());
   const [kc1Answers, setKc1Answers] = useState<Record<number, number>>({});
   const [kc2Answers, setKc2Answers] = useState<Record<number, number>>({});
@@ -35,7 +41,7 @@ export function useTrainingProgress({
 
   // Ack
   const [ack, setAck] = useState(false);
-  const [fullName, setFullName] = useState("");
+  const [fullName, setFullName] = useState(ssoAccount?.name ?? "");
   const [empId, setEmpId] = useState(user.id.includes("@") ? "" : user.id);
   const [dept, setDept] = useState("");
   const [sigData, setSigData] = useState<string>("");
@@ -46,6 +52,8 @@ export function useTrainingProgress({
   // Final assessment
   const [assessAnswers, setAssessAnswers] = useState<Record<number, number>>({});
   const [assessSubmitted, setAssessSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const assessScore = useMemo(
     () => ASSESSMENT.reduce((a, q, idx) => a + (assessAnswers[idx] === q.correct ? 1 : 0), 0),
     [assessAnswers],
@@ -74,30 +82,34 @@ export function useTrainingProgress({
       case 1:
         return maxIndex > 1;
       case 2:
-        return topicsCompleted.size >= CONFIDENTIAL_TOPICS.length;
+        return maxIndex > 2;
       case 3:
         return maxIndex > 3;
       case 4:
-        return Object.keys(kc1Answers).length === KC1.length;
+        return topicsCompleted.size >= CONFIDENTIAL_TOPICS.length;
       case 5:
         return maxIndex > 5;
       case 6:
-        return maxIndex > 6;
+        return Object.keys(kc1Answers).length === KC1.length;
       case 7:
         return maxIndex > 7;
       case 8:
-        return Object.keys(kc2Answers).length === KC2.length;
+        return maxIndex > 8;
       case 9:
-        return consequencesViewed.size >= CONSEQUENCE_TOPICS.length;
+        return maxIndex > 9;
       case 10:
-        return maxIndex > 10;
+        return Object.keys(kc2Answers).length === KC2.length;
       case 11:
-        return Object.keys(kc3Answers).length === KC3.length;
+        return consequencesViewed.size >= CONSEQUENCE_TOPICS.length;
       case 12:
-        return assessPassed;
+        return maxIndex > 12;
       case 13:
-        return false; // complete via submit
+        return Object.keys(kc3Answers).length === KC3.length;
       case 14:
+        return assessPassed;
+      case 15:
+        return false; // complete via submit
+      case 16:
         return false;
       default:
         return false;
@@ -105,13 +117,13 @@ export function useTrainingProgress({
   };
 
   const canAdvance = useMemo(() => {
-    if (i === 2) return topicsCompleted.size >= CONFIDENTIAL_TOPICS.length;
-    if (i === 4) return Object.keys(kc1Answers).length === KC1.length;
-    if (i === 8) return Object.keys(kc2Answers).length === KC2.length;
-    if (i === 9) return consequencesViewed.size >= CONSEQUENCE_TOPICS.length;
-    if (i === 11) return Object.keys(kc3Answers).length === KC3.length;
-    if (i === 12) return assessPassed;
-    if (i === 13) {
+    if (i === 4) return topicsCompleted.size >= CONFIDENTIAL_TOPICS.length;
+    if (i === 6) return Object.keys(kc1Answers).length === KC1.length;
+    if (i === 10) return Object.keys(kc2Answers).length === KC2.length;
+    if (i === 11) return consequencesViewed.size >= CONSEQUENCE_TOPICS.length;
+    if (i === 13) return Object.keys(kc3Answers).length === KC3.length;
+    if (i === 14) return assessPassed;
+    if (i === 15) {
       const sig = sigMode === "draw" ? sigData : typedSig.trim();
       return Boolean(ack && fullName.trim() && empId.trim() && dept.trim() && sig);
     }
@@ -145,14 +157,36 @@ export function useTrainingProgress({
     setDrawerOpen(false);
   };
 
-  const finish = () => {
+  const finish = async () => {
+    if (isSubmitting) return;
+
     const signature = sigMode === "draw" ? sigData : typedSig.trim();
-    onComplete({
-      signature,
-      fullName: fullName.trim(),
-      employeeId: empId.trim(),
-      department: dept.trim(),
-    });
+    const participantEmail = authService.getAccount()?.username || user.id;
+
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      await trainingService.sendTrainingForm({
+        trainingNumber: TRAINING_NUMBER,
+        participantEmail,
+      });
+
+      onComplete({
+        signature,
+        fullName: fullName.trim(),
+        employeeId: empId.trim(),
+        department: dept.trim(),
+      });
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Unable to submit your training record. Please try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   useEffect(() => {
@@ -189,6 +223,8 @@ export function useTrainingProgress({
     setDrawerOpen,
     topicsCompleted,
     setTopicsCompleted,
+    effectsViewed,
+    setEffectsViewed,
     consequencesViewed,
     setConsequencesViewed,
     kc1Answers,
@@ -220,6 +256,8 @@ export function useTrainingProgress({
     assessScore,
     assessPct,
     assessPassed,
+    isSubmitting,
+    submitError,
     canAdvance,
     go,
     finish,

@@ -1,71 +1,9 @@
-import {
-  useState,
-  type Dispatch,
-  type ReactNode,
-  type RefObject,
-  type SetStateAction,
-} from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import SignatureCanvas from "react-signature-canvas";
-import {
-  AlertTriangle,
-  Archive,
-  ArrowRight,
-  Award,
-  Building2,
-  Check,
-  CheckCircle2,
-  ChevronDown,
-  DollarSign,
-  Eye,
-  FileText,
-  Fingerprint,
-  FlaskConical,
-  Gavel,
-  Handshake,
-  HardHat,
-  Heart,
-  KeyRound,
-  Landmark,
-  Lock,
-  Mail,
-  Map,
-  Monitor,
-  PartyPopper,
-  Radio,
-  RotateCw,
-  Scale,
-  Shield,
-  ShieldCheck,
-  Sparkles,
-  Tag,
-  Target,
-  Trash2,
-  TrendingDown,
-  Truck,
-  UserCircle,
-  Users,
-  Wifi,
-  X,
-} from "lucide-react";
-import { Button, Card, Checkbox, Field, SlideHead } from "../components/primitives";
-import { BulletList, SectionLabel } from "../components/slide-content";
-import {
-  ASSESSMENT,
-  CONFIDENTIAL_TOPICS,
-  CONSEQUENCE_TOPICS,
-  DOS,
-  DONTS,
-  KC1,
-  KC2,
-  KC3,
-  RESPONSIBILITIES,
-  SECURITY,
-  TAKEAWAYS,
-  type KCQuestion,
-} from "../data";
-import { stagger } from "../motion";
-import type { BadgeKey } from "../types";
+import { AlertTriangle, ChevronDown } from "lucide-react";
+import { SlideHead } from "../components/primitives";
+import { SectionLabel } from "../components/slide-content";
+import { RESPONSIBILITIES } from "../data";
 
 export function SlideResponsibilities() {
   const [open, setOpen] = useState<number | null>(0);
@@ -86,18 +24,16 @@ export function SlideResponsibilities() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 + idx * 0.05 }}
-              className={`overflow-hidden rounded-2xl border shadow-soft transition-colors ${
-                r.critical ? "border-gold/40" : "border-border"
-              } ${isOpen ? "bg-white" : "bg-white"}`}
+              className={`overflow-hidden rounded-2xl border shadow-soft transition-colors ${r.critical ? "border-gold/40" : "border-border"
+                } ${isOpen ? "bg-white" : "bg-white"}`}
             >
               <button
                 onClick={() => setOpen(isOpen ? null : idx)}
                 className="flex w-full items-center gap-4 p-5 text-left"
               >
                 <div
-                  className={`grid size-11 shrink-0 place-items-center rounded-xl ${
-                    r.critical ? "gold-gradient text-white shadow-gold" : "bg-muted text-charcoal"
-                  }`}
+                  className={`grid size-11 shrink-0 place-items-center rounded-xl ${r.critical ? "gold-gradient text-white shadow-gold" : "bg-muted text-charcoal"
+                    }`}
                 >
                   <r.icon className="size-5" />
                 </div>

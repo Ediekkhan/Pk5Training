@@ -2,15 +2,8 @@ import { ApiResponse, ILoginPayload, ISSOAUTH, IUser } from "../interfaces";
 import { http } from "./https";
 import { getAxiosErrorMessage } from "../utils/axios-error";
 import { IChangePasswordPayload } from "../interfaces/user";
-// import { mockAuthenticationResonsePayload } from "../fixtures/user.fixture";
-
-// const useMockAuth = import.meta.env.VITE_USE_MOCK_AUTHENTICATION === "true";
 
 export async function login(payload: ILoginPayload) {
-  // if (useMockAuth) {
-  //   return mockAuthenticationResonsePayload.responseData;
-  // }
-
   try {
     const { data } = await http.post<ApiResponse<IUser>>(
       "/Authentication/login",

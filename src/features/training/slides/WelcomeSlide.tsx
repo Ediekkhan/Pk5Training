@@ -1,71 +1,7 @@
-import {
-  useState,
-  type Dispatch,
-  type ReactNode,
-  type RefObject,
-  type SetStateAction,
-} from "react";
 import { motion } from "motion/react";
-import SignatureCanvas from "react-signature-canvas";
-import {
-  AlertTriangle,
-  Archive,
-  ArrowRight,
-  Award,
-  Building2,
-  Check,
-  CheckCircle2,
-  ChevronDown,
-  DollarSign,
-  Eye,
-  FileText,
-  Fingerprint,
-  FlaskConical,
-  Gavel,
-  Handshake,
-  HardHat,
-  Heart,
-  KeyRound,
-  Landmark,
-  Lock,
-  Mail,
-  Map,
-  Monitor,
-  PartyPopper,
-  Radio,
-  RotateCw,
-  Scale,
-  Shield,
-  ShieldCheck,
-  Sparkles,
-  Tag,
-  Target,
-  Trash2,
-  TrendingDown,
-  Truck,
-  UserCircle,
-  Users,
-  Wifi,
-  X,
-} from "lucide-react";
-import { Button, Card, Checkbox, Field, SlideHead } from "../components/primitives";
-import { BulletList, SectionLabel } from "../components/slide-content";
-import {
-  ASSESSMENT,
-  CONFIDENTIAL_TOPICS,
-  CONSEQUENCE_TOPICS,
-  DOS,
-  DONTS,
-  KC1,
-  KC2,
-  KC3,
-  RESPONSIBILITIES,
-  SECURITY,
-  TAKEAWAYS,
-  type KCQuestion,
-} from "../data";
+import { ArrowRight } from "lucide-react";
+import { Button } from "../components/primitives";
 import { stagger } from "../motion";
-import type { BadgeKey } from "../types";
 import { ShieldIllustration } from "../components/ShieldIllustration";
 
 export function SlideWelcome({ onStart }: { onStart: () => void }) {
@@ -118,7 +54,7 @@ export function SlideWelcome({ onStart }: { onStart: () => void }) {
         className="relative mx-auto aspect-square w-full max-w-lg"
       >
         <div className="absolute inset-0 rounded-[36px] gold-gradient opacity-10 blur-3xl" />
-        <div className="relative flex h-full items-center justify-center rounded-[32px] border border-border bg-white shadow-elevated">
+        <div className="relative flex h-full items-center justify-center rounded-4xl border border-border bg-white shadow-elevated">
           <ShieldIllustration />
         </div>
       </motion.div>

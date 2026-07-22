@@ -1,78 +1,17 @@
-import {
-  useState,
-  type Dispatch,
-  type ReactNode,
-  type RefObject,
-  type SetStateAction,
-} from "react";
 import { motion } from "motion/react";
-import SignatureCanvas from "react-signature-canvas";
-import {
-  AlertTriangle,
-  Archive,
-  ArrowRight,
-  Award,
-  Building2,
-  Check,
-  CheckCircle2,
-  ChevronDown,
-  DollarSign,
-  Eye,
-  FileText,
-  Fingerprint,
-  FlaskConical,
-  Gavel,
-  Handshake,
-  HardHat,
-  Heart,
-  KeyRound,
-  Landmark,
-  Lock,
-  Mail,
-  Map,
-  Monitor,
-  PartyPopper,
-  Radio,
-  RotateCw,
-  Scale,
-  Shield,
-  ShieldCheck,
-  Sparkles,
-  Tag,
-  Target,
-  Trash2,
-  TrendingDown,
-  Truck,
-  UserCircle,
-  Users,
-  Wifi,
-  X,
-} from "lucide-react";
-import { Button, Card, Checkbox, Field, SlideHead } from "../components/primitives";
-import { BulletList, SectionLabel } from "../components/slide-content";
-import {
-  ASSESSMENT,
-  CONFIDENTIAL_TOPICS,
-  CONSEQUENCE_TOPICS,
-  DOS,
-  DONTS,
-  KC1,
-  KC2,
-  KC3,
-  RESPONSIBILITIES,
-  SECURITY,
-  TAKEAWAYS,
-  type KCQuestion,
-} from "../data";
-import { stagger } from "../motion";
-import type { BadgeKey } from "../types";
+import { Check, ShieldCheck } from "lucide-react";
+import { Button, Card, SlideHead } from "../components/primitives";
 
 export function SlideCompletionPrompt({
   ready,
+  submitting,
+  error,
   onSubmit,
 }: {
   ready: boolean;
-  onSubmit: () => void;
+  submitting: boolean;
+  error: string;
+  onSubmit: () => void | Promise<void>;
 }) {
   return (
     <div className="mx-auto max-w-2xl text-center">
@@ -95,9 +34,15 @@ export function SlideCompletionPrompt({
         </p>
         <div className="mt-6">
           <Button size="lg" onClick={onSubmit} disabled={!ready}>
-            <Check className="size-4" /> Submit & complete training
+            <Check className="size-4" />
+            {submitting ? "Submitting…" : "Submit & complete training"}
           </Button>
         </div>
+        {error && (
+          <p className="mt-4 text-sm font-medium text-destructive" role="alert">
+            {error}
+          </p>
+        )}
       </Card>
     </div>
   );

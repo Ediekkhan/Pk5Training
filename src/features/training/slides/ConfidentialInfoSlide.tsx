@@ -1,72 +1,11 @@
-import {
-  useState,
-  type Dispatch,
-  type ReactNode,
-  type RefObject,
-  type SetStateAction,
-} from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import SignatureCanvas from "react-signature-canvas";
-import {
-  AlertTriangle,
-  Archive,
-  ArrowLeft,
-  ArrowRight,
-  Award,
-  Building2,
-  Check,
-  CheckCircle2,
-  ChevronDown,
-  DollarSign,
-  Eye,
-  FileText,
-  Fingerprint,
-  FlaskConical,
-  Gavel,
-  Handshake,
-  HardHat,
-  Heart,
-  KeyRound,
-  Landmark,
-  Lock,
-  Mail,
-  Map,
-  Monitor,
-  PartyPopper,
-  Radio,
-  RotateCw,
-  Scale,
-  Shield,
-  ShieldCheck,
-  Sparkles,
-  Tag,
-  Target,
-  Trash2,
-  TrendingDown,
-  Truck,
-  UserCircle,
-  Users,
-  Wifi,
-  X,
-} from "lucide-react";
-import { Button, Card, Checkbox, Field, SlideHead } from "../components/primitives";
+import { ArrowLeft, ArrowRight, Check, Lock, PartyPopper, Sparkles } from "lucide-react";
+import { Button, Card, SlideHead } from "../components/primitives";
 import { BulletList, SectionLabel } from "../components/slide-content";
 import {
-  ASSESSMENT,
   CONFIDENTIAL_TOPICS,
-  CONSEQUENCE_TOPICS,
-  DOS,
-  DONTS,
-  KC1,
-  KC2,
-  KC3,
-  RESPONSIBILITIES,
-  SECURITY,
-  TAKEAWAYS,
-  type KCQuestion,
 } from "../data";
-import { stagger } from "../motion";
-import type { BadgeKey } from "../types";
 
 export function SlideWhat({
   completed,
@@ -100,8 +39,8 @@ export function SlideWhat({
     return (
       <div>
         <SlideHead
-          kicker="Chapter 2 · Guided Module"
-          title="What is confidential information?"
+          kicker="Chapter 4 · Guided Module"
+          title="What Counts as  “PK5 Mining Confidential Information”?"
           sub="Work through 12 short topics in order. Each unlocks the next."
         />
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-white p-4 shadow-soft">
@@ -113,7 +52,7 @@ export function SlideWhat({
               {completed.size} of {CONFIDENTIAL_TOPICS.length} topics completed
             </div>
           </div>
-          <div className="min-w-[180px] flex-1 sm:max-w-xs">
+          <div className="min-w-45 flex-1 sm:max-w-xs">
             <div className="h-2 overflow-hidden rounded-full bg-muted">
               <motion.div
                 className="h-full gold-gradient"
@@ -138,13 +77,12 @@ export function SlideWhat({
                 whileHover={unlocked ? { y: -2 } : {}}
                 onClick={() => unlocked && setView(idx)}
                 disabled={!unlocked}
-                className={`group relative overflow-hidden rounded-2xl border p-4 text-left shadow-soft transition-all ${
-                  done
-                    ? "border-gold/60 bg-primary-soft ring-1 ring-gold/40"
-                    : unlocked
-                      ? "border-border bg-white hover:border-gold/50 hover:shadow-elevated"
-                      : "border-border bg-muted/40 cursor-not-allowed"
-                }`}
+                className={`group relative overflow-hidden rounded-2xl border p-4 text-left shadow-soft transition-all ${done
+                  ? "border-gold/60 bg-primary-soft ring-1 ring-gold/40"
+                  : unlocked
+                    ? "border-border bg-white hover:border-gold/50 hover:shadow-elevated"
+                    : "border-border bg-muted/40 cursor-not-allowed"
+                  }`}
               >
                 {done && (
                   <div className="absolute right-2 top-2 grid size-6 place-items-center rounded-full bg-success text-white shadow-sm">
@@ -157,13 +95,12 @@ export function SlideWhat({
                   </div>
                 )}
                 <div
-                  className={`mb-3 grid size-11 place-items-center rounded-xl transition-all ${
-                    done
-                      ? "gold-gradient text-white shadow-gold"
-                      : unlocked
-                        ? "bg-primary-soft text-gold-dark group-hover:gold-gradient group-hover:text-white"
-                        : "bg-muted text-muted-foreground/50"
-                  }`}
+                  className={`mb-3 grid size-11 place-items-center rounded-xl transition-all ${done
+                    ? "gold-gradient text-white shadow-gold"
+                    : unlocked
+                      ? "bg-primary-soft text-gold-dark group-hover:gold-gradient group-hover:text-white"
+                      : "bg-muted text-muted-foreground/50"
+                    }`}
                 >
                   <t.icon className="size-5" />
                 </div>

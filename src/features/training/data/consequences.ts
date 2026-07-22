@@ -31,6 +31,7 @@ import {
   Users,
   Wifi,
 } from "lucide-react";
+
 import type { IconType } from "./confidential-topics";
 
 export type ConsequenceTopic = {

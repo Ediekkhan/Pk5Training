@@ -62,7 +62,7 @@ export const RESPONSIBILITIES: ResponsibilityDetail[] = [
     icon: AlertTriangle, title: "Report suspected breaches immediately", critical: true,
     detail: "If you suspect a leak, a lost device, unauthorized access, or a phishing attempt, contact your security or IT team within the hour — not at the end of the day. Early reporting is often the difference between a contained incident and a serious one.",
     why: "Fast reporting massively reduces the damage a breach can cause. There is no penalty for reporting in good faith.",
-    bestPractice: "Report to your supervisor and to security@pk5mining as soon as you become aware of the issue.",
+    bestPractice: "Report to your supervisor as soon as you become aware of the issue.",
     example: "You realise you replied-all to an external contact with a confidential attachment — report it now, don't wait.",
   },
   {
