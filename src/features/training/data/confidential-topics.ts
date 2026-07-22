@@ -43,7 +43,7 @@ export type ConfidentialTopic = {
   why: string;
   examples: string[];
   risks: string[];
-  responsibilities: string[];
+  // responsibilities: string[];
   bestPractices: string[];
   didYouKnow: string;
   read: string;
@@ -51,297 +51,113 @@ export type ConfidentialTopic = {
 
 export const CONFIDENTIAL_TOPICS: ConfidentialTopic[] = [
   {
-    icon: Map,
-    title: "Geological Data",
-    short: "Exploration & survey findings",
-    definition:
-      "Data from exploration, drilling, sampling and geological surveys that reveals the location, grade or extent of mineral deposits.",
-    why: "It is the foundation of PK5 Mining's competitive edge. Leaked survey results can move markets and enable competitors to stake nearby ground.",
-    examples: [
-      "Drill core assay results",
-      "Ore body models & resource estimates",
-      "Unpublished exploration maps",
-    ],
+    icon: Map, title: "Geological and Exploration Data", short: "Exploration & survey findings",
+    definition: "Geological and Exploration Data refers to information collected through geological mapping, surveys, drilling, sampling, and exploration activities to identify, evaluate, and characterize mineral deposits, their location, quality, and economic potential.",
+    why: "This is often a mining company's single most valuable asset. Premature disclosure can allow competitors to peg adjoining ground, front-run tenement applications, or trade on information not yet available to the market.",
+    examples: ["Drill hole results, assay data, and core logging records", "Geological models, structural interpretations, and target areas", "Exploration strategy, including areas targeted for future tenement applications", "Geophysical and geochemical survey data", "Resource and reserve estimates before they are publicly released"],
     risks: ["Loss of competitive advantage", "Land-claim disputes", "Insider trading exposure"],
-    responsibilities: [
-      "Store data on approved systems only",
-      "Only share with permit-cleared teams",
-      "Verify recipients before any transfer",
-    ],
-    bestPractices: [
-      "Encrypt all geological files",
-      "Use watermarking on shared reports",
-      "Log every export request",
-    ],
-    didYouKnow:
-      "A single leaked assay result has, in the industry, moved competitor share prices by more than 20% overnight.",
+    bestPractices: ["Encrypt all geological files", "Use watermarking on shared reports", "Log every export request"],
+    didYouKnow: "Geological and exploration data can represent years of research and millions of dollars in investment, making it one of a mining company's most valuable assets?",
     read: "~40s read",
   },
   {
-    icon: FileText,
-    title: "Mining Reports",
-    short: "Operational documentation",
-    definition:
-      "Internal reports covering production, safety, environmental performance and site operations.",
-    why: "They contain non-public operational detail that could be misused by competitors, activists, or bad actors.",
-    examples: [
-      "Daily production summaries",
-      "Shift-by-shift safety logs",
-      "Environmental compliance reports",
-    ],
+    icon: FileText, title: "Commercial, Financial, and Contractual Information", short: "Business Information",
+    definition: "Information relating to business operations, financial performance, and contractual agreements that support commercial and operational decision-making.",
+    why: "Protecting this information preserves the company's competitive advantage, safeguards financial interests, and ensures compliance with contractual obligations.",
+    examples: ["Cost estimates, mine plans, and feasibility studies", "Financial records, including internal accounts, audit reports, and forecasts", "Joint venture terms and ownership structures", "Offtake agreements, pricing information, and supplier agreements", "Business strategies, including growth plans, market positioning, and competitive analysis"],
     risks: ["Regulatory scrutiny", "Media misinterpretation", "Community trust damage"],
-    responsibilities: [
-      "Distribute reports on a need-to-know basis",
-      "Never email reports to personal accounts",
-      "Return printed copies to secure storage",
-    ],
-    bestPractices: [
-      "Use the report portal instead of email",
-      "Mark drafts 'Confidential — Draft'",
-      "Purge outdated reports responsibly",
-    ],
+    bestPractices: ["Use the report portal instead of email", "Mark drafts 'Confidential — Draft'", "Purge outdated reports responsibly"],
     didYouKnow: "Regulators may request historical reports up to 7 years after they were filed.",
     read: "~35s read",
   },
   {
-    icon: DollarSign,
-    title: "Financial Records",
-    short: "Revenue, costs, forecasts",
-    definition:
-      "Management accounts, forecasts, unit costs, tax positions and any information that materially affects PK5 Mining's financial picture.",
-    why: "Premature or selective disclosure can breach securities laws and undermine investor confidence.",
-    examples: [
-      "Quarterly earnings before release",
-      "Cost-per-tonne breakdowns",
-      "Capital expenditure plans",
-    ],
+    icon: DollarSign, title: "Land, Tenement, and Community Agreements", short: "Land & Community Agreements",
+    definition: "Land, Tenement, and Community Agreements refer to legal and operational agreements governing land access, mineral rights, tenement ownership, and relationships with host communities to support responsible mining activities.",
+    why: "These agreements are frequently subject to specific confidentiality clauses negotiated with communities or landholders, and premature disclosure can undermine trust or breach legal obligations owed to third parties, not just the company.",
+    examples: ["Terms of access agreements with landowners", "Native title, Indigenous land use, or traditional owner agreements", "Compensation arrangements and community benefit agreements", "Tenement applications and renewal strategy"],
     risks: ["Insider trading violations", "Loss of investor trust", "Regulatory sanctions"],
-    responsibilities: [
-      "Never discuss unreleased figures externally",
-      "Route enquiries to Investor Relations",
-      "Treat forecasts as strictly confidential",
-    ],
-    bestPractices: [
-      "Follow the disclosure calendar",
-      "Use blackout periods responsibly",
-      "Escalate leaks immediately",
-    ],
-    didYouKnow:
-      "Even a casual mention of unreleased earnings can constitute a material disclosure.",
+    bestPractices: ["Follow the disclosure calendar", "Use blackout periods responsibly", "Escalate leaks immediately"],
+    didYouKnow: "Even a casual mention of unreleased earnings can constitute a material disclosure.",
     read: "~35s read",
   },
   {
-    icon: Users,
-    title: "Employee Information",
-    short: "HR & personal data",
-    definition:
-      "Personal data, contracts, compensation, performance reviews and health information relating to employees.",
-    why: "Employees trust PK5 Mining to safeguard their personal data — and privacy law requires it.",
-    examples: [
-      "Salary and benefit details",
-      "Medical or safety incident records",
-      "Performance reviews",
-    ],
-    risks: ["Privacy law breach & fines", "Erosion of employee trust", "Reputational damage"],
-    responsibilities: [
-      "Access only what your role requires",
-      "Never share HR data casually",
-      "Report exposed records immediately",
-    ],
-    bestPractices: [
-      "Use role-based access",
-      "Anonymise data where possible",
-      "Lock HR files when unattended",
-    ],
-    didYouKnow:
-      "Under most privacy regimes, employee records are protected for the entire employment period plus several years after.",
+    icon: Users, title: "Safety, Environmental, and Incident Data", short: "HSE Records",
+    definition: "Information relating to workplace safety, environmental performance, and incident reporting used to manage operational risks and ensure regulatory compliance.",
+    why: "Protecting this data supports workplace safety, regulatory compliance, environmental stewardship, and effective risk management.",
+    examples: ["Incident investigation reports before they are finalized", "Environmental monitoring data showing non-compliance", "Regulatory correspondence regarding compliance issues"],
+    risks: ["Compromised incident investigations", "Reputational damage and loss of stakeholder trust", "Regulatory non-compliance and penalties"],
+    bestPractices: ["Report incidents through approved channels", "Secure investigation reports and incident logs", "Protect sensitive safety and environmental records"],
+    didYouKnow: "Safety and incident records are often required to be retained for several years to support regulatory compliance, audits, and investigations?",
     read: "~30s read",
   },
   {
-    icon: UserCircle,
-    title: "Customer Information",
-    short: "Client details & history",
-    definition:
-      "Customer identities, order histories, pricing arrangements and any commercially sensitive dealings.",
+    icon: UserCircle, title: "Customer Information", short: "Client details & history",
+    definition: "Customer Information refers to personal, business, and transactional information relating to customers, clients, or business partners that is collected and maintained to support business operations and service delivery.",
     why: "Our clients share information under strict confidentiality expectations, backed by contract.",
-    examples: ["Long-term offtake agreements", "Customer-specific pricing", "Purchase forecasts"],
+    examples: ["Customer identities, order volumes, and shipment details", "Customer-specific pricing, discounts, and contract terms", "Customer complaints, disputes, or performance issues"],
     risks: ["Breach of client contract", "Loss of key accounts", "Litigation"],
-    responsibilities: [
-      "Verify identity before sharing anything",
-      "Use secure client portals",
-      "Follow the client data policy",
-    ],
-    bestPractices: [
-      "Log every customer data access",
-      "Redact where possible",
-      "Never mix customer data across accounts",
-    ],
-    didYouKnow:
-      "Most customer NDAs continue in force for 3–5 years after the commercial relationship ends.",
+    bestPractices: ["Log every customer data access", "Redact where possible", "Never mix customer data across accounts"],
+    didYouKnow: "Most customer NDAs continue in force for 3–5 years after the commercial relationship ends.",
     read: "~35s read",
   },
   {
-    icon: Handshake,
-    title: "Contracts",
-    short: "Legal agreements",
-    definition:
-      "All executed and draft agreements with suppliers, customers, partners, contractors and regulators.",
-    why: "Contract terms reveal commercial strategy, pricing and obligations that competitors could exploit.",
-    examples: ["Joint venture agreements", "Supply and offtake contracts", "Consulting agreements"],
-    risks: ["Loss of negotiating leverage", "Contractual disputes", "Regulatory issues"],
-    responsibilities: [
-      "Route contracts through Legal",
-      "Never share drafts externally",
-      "Store originals in the contract vault",
-    ],
-    bestPractices: [
-      "Use redlines only in the approved tool",
-      "Version-control all drafts",
-      "Shred obsolete printed copies",
-    ],
-    didYouKnow:
-      "A single leaked contract clause has, in past cases, cost mining companies millions in re-negotiated terms.",
+    icon: Handshake, title: "Operational and Technical Information", short: "Operational Records",
+    definition: "Information relating to mining operations, technical processes, equipment, systems, and procedures used to support the planning, execution, and management of mining activities.",
+    why: "Protecting this information safeguards operational efficiency, proprietary processes, and the company's competitive advantage while reducing operational and security risks.",
+    examples: ["Processing plant design, metallurgical recovery rates, and flowsheets", "Equipment performance data and maintenance schedules", "Proprietary extraction or processing techniques", "Site security arrangements and access protocols"],
+    risks: ["Operational disruption", "Competitive and security risks", "Exposure of proprietary processes"],
+    bestPractices: ["Restrict access using role-based permissions", "Store technical documents securely", "Share operational information only with authorized personnel"],
+    didYouKnow: "Operational and technical records are often classified as confidential because they contain proprietary methods, infrastructure details, and information critical to safe and efficient mining operations.",
     read: "~35s read",
   },
   {
-    icon: Mail,
-    title: "Internal Communications",
-    short: "Emails, chats, memos",
-    definition:
-      "Emails, chat messages, meeting notes and internal memos discussing PK5 Mining's business.",
-    why: "Even ordinary conversations often contain non-public detail that could damage the company if shared.",
-    examples: ["Executive email threads", "Leadership meeting notes", "Sensitive Slack channels"],
+    icon: Mail, title: "Internal Communications", short: "Emails, chats, memos",
+    definition: "Information exchanged within the organization, including emails, reports, memos, meeting notes, and internal announcements used to support business operations and decision-making.",
+    why: "Protecting internal communications prevents unauthorized disclosure of sensitive information, supports informed decision-making, and maintains operational integrity.",
+    examples: ["Emails, memos, meeting minutes, and messaging threads not intended for external release",  "Board papers and executive discussions", "Draft reports, plans, or announcements still under internal review"],
     risks: ["Public misinterpretation", "Regulatory exposure", "Trust breakdown internally"],
-    responsibilities: [
-      "Treat internal messages as private",
-      "Never forward externally",
-      "Report accidental sends",
-    ],
-    bestPractices: [
-      "Use company channels only",
-      "Avoid confidential detail in subject lines",
-      "Be mindful in public spaces",
-    ],
-    didYouKnow:
-      "Screenshots of internal messages are one of the top three sources of confidentiality incidents industry-wide.",
+    bestPractices: ["Use company channels only", "Avoid confidential detail in subject lines", "Be mindful in public spaces"],
+    didYouKnow: "Screenshots of internal messages are one of the top three sources of confidentiality incidents industry-wide.",
     read: "~30s read",
   },
   {
-    icon: Target,
-    title: "Business Strategies",
-    short: "Plans, roadmaps, initiatives",
-    definition:
-      "Strategic plans, roadmaps, M&A activity, expansion plans and other forward-looking initiatives.",
-    why: "Strategic intent is often more valuable than data — competitors can pre-empt or block our moves.",
-    examples: ["Expansion into new regions", "Acquisition targets", "Product or service roadmaps"],
-    risks: ["Competitive counter-moves", "Loss of first-mover advantage", "Deal collapse"],
-    responsibilities: [
-      "Discuss strategy only in trusted rooms",
-      "Never post strategy detail publicly",
-      "Use code names where required",
-    ],
-    bestPractices: [
-      "Compartmentalise information",
-      "Restrict physical printouts",
-      "Follow the deal-team protocol",
-    ],
-    didYouKnow:
-      "M&A leaks have derailed roughly 1 in 10 announced deals across the resources sector.",
+    icon: Target, title: "Research and Development", short: "R&D Records",
+    definition: "These are Information relating to research, innovation, testing, and the development of new technologies, processes, and products to improve mining operations and business performance.",
+    why: "Protecting R&D information preserves intellectual property, maintains the company's competitive advantage, and prevents unauthorized use of proprietary innovations.",
+    examples: ["New extraction, processing, or automation techniques under development", "Pilot study data and trial results", "Innovation partnerships and R&D collaboration agreements"],
+    risks: ["Loss of intellectual property", "Competitive disadvantage", "Unauthorized use of proprietary research"],
+    bestPractices: ["Restrict access to R&D documents", "Store research data securely", "Share information only with authorized personnel"],
+    didYouKnow: "Research and development data can provide a significant competitive advantage, making it one of a company's most valuable intellectual assets?",
     read: "~35s read",
   },
   {
-    icon: Tag,
-    title: "Pricing Information",
-    short: "Rate structures & margins",
-    definition: "Pricing strategies, margin structures, customer-specific rates and cost bases.",
-    why: "Pricing insight allows competitors to undercut us and customers to demand better terms.",
-    examples: ["Customer discount schedules", "Tender pricing", "Margin analysis"],
-    risks: ["Loss of contracts", "Reduced margins", "Anti-competitive allegations"],
-    responsibilities: [
-      "Never share pricing outside the deal team",
-      "Treat tender data as top-tier confidential",
-      "Watch out for social-engineering enquiries",
-    ],
-    bestPractices: [
-      "Use approved quoting tools",
-      "Never quote from memory",
-      "Verify identity of every enquirer",
-    ],
-    didYouKnow:
-      "Sharing pricing with competitors — even accidentally — can trigger antitrust investigations.",
+    icon: Tag, title: "Access Credentials and IT Security", short: "IT Security",
+    definition: "Information relating to user accounts, passwords, authentication methods, system access, and cybersecurity measures used to protect the company's digital systems and data.",
+    why: "Compromised credentials are one of the most common ways confidential information of every other kind ends up in the wrong hands. Treat access credentials as confidential in their own right, not just as a means to an end.",
+    examples: ["VPN details, system architecture, and network configuration information", "Site access codes, swipe card permissions, and physical security arrangements", "VPN details, system architecture, and network configuration information"],
+    risks: ["Unauthorized access to systems", "Data breaches and cyberattacks", "Operational disruption and financial loss"],
+    bestPractices: ["Use strong, unique passwords and multi-factor authentication", "Never share or reuse login credentials", "Report suspicious emails and security incidents immediately"],
+    didYouKnow: "Compromised credentials are one of the most common ways attackers gain unauthorized access to corporate systems, making password security a critical first line of defense?",
     read: "~30s read",
   },
   {
-    icon: Truck,
-    title: "Supplier Agreements",
-    short: "Vendor terms & pricing",
-    definition:
-      "Terms, pricing and performance data covering PK5 Mining's supplier and contractor relationships.",
-    why: "Supplier terms reveal our cost base and could damage partner relationships if exposed.",
-    examples: ["Master supply agreements", "Contractor rates", "Supplier performance scorecards"],
-    risks: ["Higher input costs", "Broken supplier trust", "Contract disputes"],
-    responsibilities: [
-      "Only share terms with authorised teams",
-      "Never discuss supplier rates casually",
-      "Use the vendor portal",
-    ],
-    bestPractices: [
-      "Segment supplier data by category",
-      "Require NDAs before sharing detail",
-      "Archive expired agreements securely",
-    ],
-    didYouKnow:
-      "Suppliers often have contractual audit rights — a leak of their terms can trigger those audits.",
+    icon: Truck, title: "People-Related Information", short: "Personnel Records",
+    definition: "Information relating to employees, contractors, and job applicants, including personal details, employment records, performance information, and other work-related data.",
+    why: "Protecting people-related information safeguards individual privacy, builds trust, and ensures compliance with employment and data protection laws.",
+    examples: ["Employee personal and medical records", "Remuneration, disciplinary records, and grievance details", "Contractor and supplier commercial terms"],
+    risks: ["Privacy breaches and legal penalties", "Identity theft or misuse of personal information", "Loss of employee trust and reputational damage"],
+    bestPractices: ["Restrict access to personnel records", "Store personal information securely", "Share employee data only with authorized personnel"],
+    didYouKnow: "Personnel records often contain sensitive personal information that must be kept confidential?",
     read: "~30s read",
   },
   {
-    icon: FlaskConical,
-    title: "Research & Development",
-    short: "Innovation & IP",
-    definition:
-      "Research programs, pilot studies, process innovations, patents in progress and other proprietary IP.",
-    why: "R&D is where tomorrow's advantage is built — leaks give it away for free.",
-    examples: ["Extraction process trials", "Automation pilots", "Patent applications in progress"],
-    risks: ["Loss of patent priority", "Competitor imitation", "Reduced R&D ROI"],
-    responsibilities: [
-      "Protect research data at all times",
-      "Only publish through approved channels",
-      "Report suspected IP theft",
-    ],
-    bestPractices: [
-      "Use segregated R&D networks",
-      "Require NDAs for all research partners",
-      "Log every access to lab data",
-    ],
-    didYouKnow:
-      "In many jurisdictions, public disclosure — even a conference slide — can invalidate a patent.",
-    read: "~35s read",
-  },
-  {
-    icon: Building2,
-    title: "Company Assets",
-    short: "Physical & digital property",
-    definition:
-      "All physical assets, systems, tooling, code, digital platforms and infrastructure owned by PK5 Mining.",
-    why: "Details about our assets — where they are, how they're configured — could be exploited for theft or sabotage.",
-    examples: [
-      "Site layouts and access schedules",
-      "System architecture diagrams",
-      "Vehicle & equipment inventories",
-    ],
-    risks: ["Theft & sabotage", "Cyber intrusion", "Safety incidents"],
-    responsibilities: [
-      "Never share site or system detail publicly",
-      "Report suspicious surveillance",
-      "Follow physical security protocols",
-    ],
-    bestPractices: [
-      "Use approved asset registers",
-      "Restrict floor plans and diagrams",
-      "Escort external visitors at all times",
-    ],
-    didYouKnow:
-      "Publicly posted site photos have been used by criminals to plan resource-sector thefts.",
+    icon: FlaskConical, title: "Market-Sensitive Information ", short: "Market Information",
+    definition: "Information that could influence the value of a company's securities, including financial results, major projects, acquisitions, and other material business developments.",
+    why: "Protecting market-sensitive information helps prevent insider trading, ensures regulatory compliance, and maintains market integrity.",
+    examples: ["Any information not yet released to the market that a reasonable investor would consider relevant to their investment decision — this includes resource upgrades, downgrades, feasibility results, major incidents, executive changes, and funding developments"],
+    risks: ["Insider trading violations", "Regulatory penalties", "Loss of investor confidence"],
+    bestPractices: ["Share material information only with authorized personnel", "Follow approved disclosure procedures", "Keep unpublished information secure"],
+    didYouKnow: "Premature disclosure of market-sensitive information can influence share prices and lead to serious legal consequences?",
     read: "~35s read",
   },
 ];

@@ -301,10 +301,10 @@ export function SlideWhat({
             <SectionLabel>Risks if disclosed</SectionLabel>
             <BulletList items={t.risks} tone="warn" />
           </div>
-          <div>
+          {/* <div>
             <SectionLabel>Your responsibilities</SectionLabel>
             <BulletList items={t.responsibilities} />
-          </div>
+          </div> */}
           <div>
             <SectionLabel>Best practices</SectionLabel>
             <BulletList items={t.bestPractices} tone="good" />
